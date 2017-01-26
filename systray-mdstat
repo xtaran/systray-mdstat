@@ -1,0 +1,147 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use 5.010;
+
+my $VERSION = '0.1';
+
+=head1 NAME
+
+systray-mdstat - small system tray icon which shows the state of local md RAIDs
+
+=head1 SYNOPSIS
+
+systray-mdstat
+
+=head1 DESCRIPTION
+
+This program allows one to display an icon indicating the state of
+local md RAIDs in any freedesktop.org-compliant status area.
+
+=head1 AUTHOR
+
+Axel Beckert L<mailto:abe@deuxchevaux.org>
+
+Very loosely based on the outer framework of fdpowermon by Wouter
+Verhelst and the mdstat check from Debian's hobbit-plugins package
+written by Christoph Berg under the MIT license. (Both stated that the
+amount of code I copied is too small to make their copyright apply,
+hence I'm not bound to the licenses they used for their code.)
+
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU Library General Public
+License along with this library. If not, see
+<http://www.gnu.org/licenses/>.
+
+=cut
+
+use Gtk3 -init;
+use Glib::Object::Introspection;
+use List::Util qw(max);
+
+our $use_notify = 1;
+my $icon;
+my $old_state = 0;
+
+eval {
+    Glib::Object::Introspection->setup(
+        basename => 'Notify',
+        version => '0.7',
+        package => "Systray::Mdstat::Notify",
+        );
+};
+
+if ($@) {
+    say "no notify because setup failed: $@";
+    $use_notify = 0;
+} else {
+    Systray::Mdstat::Notify->init();
+}
+
+$icon = Gtk3::StatusIcon->new();
+check_mdstat();
+Glib::Timeout->add_seconds(3, \&check_mdstat);
+Gtk3->main();
+
+sub check_mdstat {
+    # 0 = unknown
+    # 1 = ok
+    # 2 = warning
+    # 3 = alarm
+    my $state = 0;
+    my $text = '';
+
+    open(MDSTAT, '<', "/proc/mdstat") or die "Can't read from /proc/mdstat: $!";
+    my $last_md = '';
+    while (<MDSTAT>) {
+        if (/^(md\d+) *: /) {
+            $last_md = $1;
+            $text .= "; " unless $text eq '';
+        } elsif (/\[U+\]/) {
+            $state = max($state, 1);
+            $text .= "$last_md: OK";
+        } elsif (/(resync|verify)/) {
+            $state = max($state, 2);
+            $text .= " ($1)";
+        } elsif (/\(F\)/) {
+            $state = max($state, 3);
+            $text .= "$last_md: FAIL";
+        } elsif (/\[U*_U*\]/) {
+            $state = max($state, 3);
+            $text .= "DEGRADED";
+        }
+    }
+    close MDSTAT;
+
+    $icon->set_visible(1);
+    $icon->set_tooltip_text($text);
+    if ($state == 0) {
+        $icon->set_from_stock("gtk-dialog-question");
+    } elsif ($state == 1) {
+        $icon->set_from_stock("gtk-dialog-info");
+    } elsif ($state == 2) {
+        $icon->set_from_stock("gtk-dialog-warning");
+    } else {
+        $icon->set_from_stock("gtk-dialog-question");
+    }
+
+    my $message;
+    if ($old_state == 0 and $state != 0) {
+        $message = "Current /proc/mdstat state: ".$text;
+    } else {
+        $message = "/proc/mdstat state changed: ".$text;
+    }
+    if ($state != $old_state) {
+        if ($use_notify) {
+            my $notif = Systray::Mdstat::Notify::Notification->new(
+                "Software RAID State", $message);
+            eval {
+                $notif->show;
+            };
+            if ($@) {
+                # Something went wrong trying to show a notification
+                # message. Fall back to using a dialog box instead.
+                $use_notify = 0;
+            };
+        }
+        if (!$use_notify) {
+            my $dialog = Gtk3::MessageDialog->new(
+                undef, 'destroy-with-parent', 'warning', 'ok', $message);
+            $dialog->run;
+            $dialog->destroy;
+        }
+        $old_state = $state;
+    }
+}
