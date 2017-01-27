@@ -5,15 +5,16 @@ systray-mdstat
 local software (md) RAIDs by checking `/proc/mdstat` periodically.
 
 It works at least on Linux and should work with any
-freedesktop.org-compliant status area (aka system tray).
+[freedesktop.org-compliant status area (aka system tray)](https://specifications.freedesktop.org/systemtray-spec/latest/).
 
 Use Case
 --------
 
 The use cases for this utility is probably rather restricted:
 
-* Desktop or laptop with Linux and software RAID (i.e. at least two
-  permanent disks)
+* Desktop or laptop with
+  [Linux Software RAID](https://raid.wiki.kernel.org/) (i.e. at least
+  two permanent disks)
 
 * Not wanting to have any remote monitoring like e.g. Icinga or Xymon
   (e.g. for privacy reasons or due to lacking an according server).
@@ -22,31 +23,35 @@ The use cases for this utility is probably rather restricted:
 Requirements
 ------------
 
-* Perl ≥ 5.10
+* [Perl](https://www.perl.org/) ≥ 5.10
 * a bunch of Perl modules:
-  * Gtk3
-  * Glib::Object::Introspection
-  * List::Util
+  * [Gtk3](https://metacpan.org/pod/Gtk3)
+  * [Glib::Object::Introspection](https://metacpan.org/pod/Glib::Object::Introspection)
+  * [List::Util](https://metacpan.org/pod/List::Util)
 
 
 Author, Copyright and License
 -----------------------------
 
-Copyright © 2017 by Axel Beckert <abe@deuxchevaux.org>
+Copyright © 2017 by [Axel Beckert](https://axel.beckert.ch/)
+<abe@deuxchevaux.org>
 
 This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at
-your option) any later version.
+it under the terms of the
+[GNU General Public License](https://www.gnu.org/licenses/gpl) as
+published by the [Free Software Foundation](https://fsf.org/); either
+[version 3 of the License](https://www.gnu.org/licenses/gpl-3.0), or
+(at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program. If not, see
-[GNU's website](https://www.gnu.org/licenses/).
+You should have received
+[a copy of the GNU General Public License](COPYING) along with this
+program. If not, see [GNU's website](https://www.gnu.org/licenses/)
+for an [online copy](https://www.gnu.org/licenses/gpl-3.0).
 
 ### Notes
 
