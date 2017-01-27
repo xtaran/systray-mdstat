@@ -101,7 +101,7 @@ sub check_mdstat {
             $text .= "$last_md: FAIL";
         } elsif (/\[U*_U*\]/) {
             $state = max($state, 3);
-            $text .= "DEGRADED";
+            $text .= "$last_md: DEGRADED";
         }
     }
     close MDSTAT;
