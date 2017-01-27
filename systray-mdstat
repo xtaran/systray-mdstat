@@ -24,10 +24,11 @@ local md RAIDs in any freedesktop.org-compliant status area.
 Axel Beckert L<mailto:abe@deuxchevaux.org>
 
 Very loosely based on the outer framework of fdpowermon by Wouter
-Verhelst and the mdstat check from Debian's hobbit-plugins package
-written by Christoph Berg under the MIT license. (Both stated that the
-amount of code I copied is too small to make their copyright apply,
-hence I'm not bound to the licenses they used for their code.)
+Verhelst under Poul-Henning Kamp's "Beer-ware" license, and the mdstat
+check from Debian's hobbit-plugins package written by Christoph Berg
+under the MIT license. (Both stated that the amount of code I copied
+is too small to make their copyright apply, hence I'm not bound to the
+licenses they used for their code.)
 
 =head1 LICENSE
 

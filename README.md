@@ -53,12 +53,15 @@ License along with this library. If not, see
 * The initial code is very loosely based on the outer framework of the
   far more complex
   [fdpowermon](https://anonscm.debian.org/git/users/wouter/fdpowermon.git)
-  by Wouter Verhelst and the tiny
+  by Wouter Verhelst under
+  [Poul-Henning Kamp's "Beer-ware" license](https://people.freebsd.org/~phk/)
+  and the tiny
   [mdstat check from Debian's hobbit-plugins package](https://anonscm.debian.org/cgit/collab-maint/hobbit-plugins.git/tree/src/usr/lib/xymon/client/ext/mdstat)
-  written by Christoph Berg under the MIT license. (Both, Christoph
-  and Wouter stated that the amount of code I copied is too small to
-  make their copyright apply, hence I'm not bound to the licenses they
-  used for their code.)
+  written by Christoph Berg under
+  [the MIT license](https://anonscm.debian.org/cgit/collab-maint/hobbit-plugins.git/tree/debian/copyright). (Both,
+  Christoph and Wouter stated that the amount of code I copied is too
+  small to make their copyright apply, hence I'm not bound to the
+  licenses they used for their code.)
 
 * The icons in the subdirectory [images](images/) were taken from the
   [dmraid plugin of phpsysinfo](https://github.com/phpsysinfo/phpsysinfo/tree/master/plugins/dmraid/gfx)
