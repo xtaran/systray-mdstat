@@ -48,14 +48,21 @@ You should have received a copy of the GNU Library General Public
 License along with this library. If not, see
 [GNU's website](https://www.gnu.org/licenses/).
 
-### Note
+### Notes
 
-The initial code is very loosely based on the outer framework of the
-far more complex
-[fdpowermon](https://anonscm.debian.org/git/users/wouter/fdpowermon.git)
-by Wouter Verhelst and the tiny
-[mdstat check from Debian's hobbit-plugins package](https://anonscm.debian.org/cgit/collab-maint/hobbit-plugins.git/tree/src/usr/lib/xymon/client/ext/mdstat)
-written by Christoph Berg under the MIT license. (Both, Christoph and
-Wouter stated that the amount of code I copied is too small to make
-their copyright apply, hence I'm not bound to the licenses they used
-for their code.)
+* The initial code is very loosely based on the outer framework of the
+  far more complex
+  [fdpowermon](https://anonscm.debian.org/git/users/wouter/fdpowermon.git)
+  by Wouter Verhelst and the tiny
+  [mdstat check from Debian's hobbit-plugins package](https://anonscm.debian.org/cgit/collab-maint/hobbit-plugins.git/tree/src/usr/lib/xymon/client/ext/mdstat)
+  written by Christoph Berg under the MIT license. (Both, Christoph
+  and Wouter stated that the amount of code I copied is too small to
+  make their copyright apply, hence I'm not bound to the licenses they
+  used for their code.)
+
+* The icons in the subdirectory [images](images/) were taken from the
+  [dmraid plugin of phpsysinfo](https://github.com/phpsysinfo/phpsysinfo/tree/master/plugins/dmraid/gfx)
+  and are licensed
+  [at least under the GNU GPL version 2](https://github.com/phpsysinfo/phpsysinfo/blob/master/COPYING),
+  but
+  [likely alternatively also under any later version of the GNU GPL](http://metadata.ftp-master.debian.org/changelogs/main/p/phpsysinfo/unstable_copyright).

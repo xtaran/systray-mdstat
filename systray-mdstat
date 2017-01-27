@@ -108,15 +108,15 @@ sub check_mdstat {
     $icon->set_visible(1);
     $icon->set_tooltip_text($text);
     if ($state == 0) {
-        $icon->set_from_stock("gtk-dialog-question");
+        $icon->set_from_file(find_icon_path("harddrivespare"));
     } elsif ($state == 1) {
-        $icon->set_from_stock("gtk-dialog-info");
+        $icon->set_from_file(find_icon_path("harddriveok"));
     } elsif ($state == 2) {
-        $icon->set_from_stock("gtk-dialog-warning");
+        $icon->set_from_file(find_icon_path("harddrivewarn"));
     } elsif ($state == 3) {
-        $icon->set_from_stock("gtk-dialog-error");
+        $icon->set_from_file(find_icon_path("harddrivefail"));
     } else {
-        $icon->set_from_stock("gtk-dialog-question");
+        $icon->set_from_icon_name("gtk-dialog-question");
     }
 
     my $message;
@@ -146,4 +146,22 @@ sub check_mdstat {
         }
         $old_state = $state;
     }
+}
+
+sub find_icon_path {
+    my $icon = shift;
+    my $filename = "$icon.png";
+    my $fullpath;
+    foreach my $path (qw(
+                      images
+                      /usr/local/share/systray-mdstat
+                      /usr/share/systray-mdstat
+                      )) {
+        if (-r "$path/$filename") {
+            $fullpath = "$path/$filename";
+            last;
+        }
+    }
+    die "Icon $filename not found" unless $fullpath;
+    return $fullpath;
 }
