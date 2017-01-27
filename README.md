@@ -44,8 +44,8 @@ WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
 
-You should have received a copy of the GNU Library General Public
-License along with this library. If not, see
+You should have received a copy of the GNU General Public License
+along with this program. If not, see
 [GNU's website](https://www.gnu.org/licenses/).
 
 ### Notes
