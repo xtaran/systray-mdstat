@@ -113,6 +113,8 @@ sub check_mdstat {
         $icon->set_from_stock("gtk-dialog-info");
     } elsif ($state == 2) {
         $icon->set_from_stock("gtk-dialog-warning");
+    } elsif ($state == 3) {
+        $icon->set_from_stock("gtk-dialog-error");
     } else {
         $icon->set_from_stock("gtk-dialog-question");
     }
