@@ -1,0 +1,26 @@
+Source: systray-mdstat
+Section: utils
+Priority: extra
+Maintainer: Axel Beckert <abe@debian.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.8
+Homepage: https://github.com/xtaran/systray-mdstat#readme
+Vcs-Git: https://github.com/xtaran/systray-mdstat.git
+Vcs-Browser: https://github.com/xtaran/systray-mdstat
+
+Package: systray-mdstat
+Architecture: all
+Depends: ${misc:Depends},
+         libgtk3-perl,
+         perl
+Enhances: mdadm
+Suggests: perlpanel | stalonetray | trayer | cairo-dock-systray-plug-in | docker | libgtk2-traymanager-perl | taffybar | tint2 | wmsystemtray | fspanel | fbpanel | lxqt-panel | lxpanel | mate-panel | xfce4-panel | jwm | i3-wm | awesome | fvwm
+Description: Notifies about Linux Software RAID changes in system tray
+ systray-mdstat is a small system tray icon indicating the state of
+ local Linux Software RAIDs (as setup with mdadm) by checking
+ /proc/mdstat for changes — especially failures — periodically.
+ .
+ The use cases for this utility is a desktop or laptop with a software
+ RAID setup and no remote monitoring of the state of the RAID
+ (e.g. for privacy reasons or due to lacking a permanent network
+ connection or an appropriate monitoring server).
