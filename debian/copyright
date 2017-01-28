@@ -1,9 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: systray-mdstat
+Upstream-Contact: Axel Beckert <abe@deuxchevaux.org>
 Source: https://github.com/xtaran/systray-mdstat
 
 Files: *
-Copyright: 2017 Axel Beckert <abe@debian.org>
+Copyright: 2017 Axel Beckert <abe@deuxchevaux.org>
 License: GPL-3+
 
 License: GPL-3+
