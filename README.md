@@ -17,8 +17,9 @@ The use cases for this utility is probably rather restricted:
   [Linux Software RAID](https://raid.wiki.kernel.org/) (i.e. at least
   two permanent disks)
 
-* Not wanting to have any remote monitoring like e.g. Icinga or Xymon
-  (e.g. for privacy reasons or due to lacking an according server).
+* Not wanting to have any remote monitoring (e.g. for privacy reasons
+  or due to lacking a permanent internet connection or an appropriate
+  monitoring server).
 
 
 Requirements

@@ -22,6 +22,6 @@ Description: Notifies about Linux Software RAID changes in system tray
  /proc/mdstat for changes — especially failures — periodically.
  .
  The use case for this utility is a desktop or laptop with a software
- RAID setup and no remote monitoring of the state of the RAID
- (e.g. for privacy reasons or due to lacking a permanent network
- connection or an appropriate monitoring server).
+ RAID setup and no remote monitoring of the RAID (e.g. for privacy
+ reasons or due to lacking a permanent network connection or an
+ appropriate monitoring server).
