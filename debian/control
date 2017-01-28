@@ -18,7 +18,7 @@ Enhances: mdadm
 Suggests: perlpanel | stalonetray | trayer | cairo-dock-systray-plug-in | docker | libgtk2-traymanager-perl | taffybar | tint2 | wmsystemtray | fspanel | fbpanel | lxqt-panel | lxpanel | mate-panel | xfce4-panel | jwm | i3-wm | awesome | fvwm
 Description: Notifies about Linux Software RAID changes in system tray
  systray-mdstat is a small system tray icon indicating the state of
- local Linux Software RAIDs (as setup with mdadm) by checking
+ local Linux Software RAIDs (as set up with mdadm) by checking
  /proc/mdstat for changes — especially failures — periodically.
  .
  The use cases for this utility is a desktop or laptop with a software
