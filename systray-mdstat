@@ -52,6 +52,15 @@ use Gtk3 -init;
 use Glib::Object::Introspection;
 use List::Util qw(max);
 
+my @states = qw( spare ok warn fail );
+my @mdstat_checks = (
+    # regular expression  => state => string
+    [ qr/\[U+\]/          => 1     => 'OK'       ],
+    [ qr/(resync|verify)/ => 2     => ' (%s)'    ],
+    [ qr/\(F\)/           => 3     => 'FAILED'   ],
+    [ qr/\[U*_U*\]/       => 3     => 'DEGRADED' ],
+    );
+
 our $use_notify = 1;
 my $old_state = 0;
 my $icon = Gtk3::StatusIcon->new();
@@ -86,38 +95,27 @@ sub check_mdstat {
 
     my $last_md = '';
     open(my $MDSTAT, '<', "/proc/mdstat") or die "Can't read from /proc/mdstat: $!";
-    while (<$MDSTAT>) {
-        if (/^(md\d+) *: /) {
+    while (my $line = <$MDSTAT>) {
+        if ($line =~ /^(md\d+) *: /) {
             $last_md = $1;
             $text .= "; " unless $text eq '';
-        } elsif (/\[U+\]/) {
-            $state = max($state, 1);
-            $text .= "$last_md: OK";
-        } elsif (/(resync|verify)/) {
-            $state = max($state, 2);
-            $text .= " ($1)";
-        } elsif (/\(F\)/) {
-            $state = max($state, 3);
-            $text .= "$last_md: FAIL";
-        } elsif (/\[U*_U*\]/) {
-            $state = max($state, 3);
-            $text .= "$last_md: DEGRADED";
+        } else {
+            foreach my $check (@mdstat_checks) {
+                if ($line =~ $check->[0]) {
+                    $state = max($state, $check->[1]);
+                    if ($check->[2] =~ /\%/) {
+                        $text .= sprintf($check->[2], $&);
+                    } else {
+                        $text .= "$last_md: ".$check->[2];
+                    }
+                }
+            }
         }
     }
     close $MDSTAT;
 
     $icon->set_tooltip_text($text);
-    if ($state == 0) {
-        $icon->set_from_file(find_icon_path("harddrivespare"));
-    } elsif ($state == 1) {
-        $icon->set_from_file(find_icon_path("harddriveok"));
-    } elsif ($state == 2) {
-        $icon->set_from_file(find_icon_path("harddrivewarn"));
-    } elsif ($state == 3) {
-        $icon->set_from_file(find_icon_path("harddrivefail"));
-    } else {
-        $icon->set_from_icon_name("gtk-dialog-question");
-    }
+    $icon->set_from_file(find_icon_path("harddrive".$states[$state]));
 
     my $message;
     if ($old_state == 0 and $state != 0) {
