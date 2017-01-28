@@ -29,6 +29,7 @@ Requirements
   * [Gtk3](https://metacpan.org/pod/Gtk3)
   * [Glib::Object::Introspection](https://metacpan.org/pod/Glib::Object::Introspection)
   * [List::Util](https://metacpan.org/pod/List::Util)
+  * [Try::Tiny](https://metacpan.org/pod/Try::Tiny)
 
 
 Author, Copyright and License

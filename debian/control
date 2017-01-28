@@ -12,6 +12,7 @@ Package: systray-mdstat
 Architecture: all
 Depends: ${misc:Depends},
          libgtk3-perl,
+         libtry-tiny-perl,
          perl
 Enhances: mdadm
 Suggests: perlpanel | stalonetray | trayer | cairo-dock-systray-plug-in | docker | libgtk2-traymanager-perl | taffybar | tint2 | wmsystemtray | fspanel | fbpanel | lxqt-panel | lxpanel | mate-panel | xfce4-panel | jwm | i3-wm | awesome | fvwm

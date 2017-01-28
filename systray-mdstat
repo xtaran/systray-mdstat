@@ -51,6 +51,7 @@ License along with this library. If not, see
 use Gtk3 -init;
 use Glib::Object::Introspection;
 use List::Util qw(max);
+use Try::Tiny;
 
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
@@ -66,20 +67,17 @@ my $old_state = 0;
 my $icon = Gtk3::StatusIcon->new();
 $icon->set_visible(1);
 
-eval {
+try {
     Glib::Object::Introspection->setup(
         basename => 'Notify',
         version => '0.7',
         package => "Systray::Mdstat::Notify",
         );
-};
-
-if ($@) {
+    Systray::Mdstat::Notify->init();
+} catch {
     say "no notify because setup failed: $@";
     $use_notify = 0;
-} else {
-    Systray::Mdstat::Notify->init();
-}
+};
 
 check_mdstat();
 Glib::Timeout->add_seconds(3, \&check_mdstat);
@@ -127,10 +125,9 @@ sub check_mdstat {
         if ($use_notify) {
             my $notif = Systray::Mdstat::Notify::Notification->new(
                 "Software RAID State", $message);
-            eval {
+            try {
                 $notif->show;
-            };
-            if ($@) {
+            } catch {
                 # Something went wrong trying to show a notification
                 # message. Fall back to using a dialog box instead.
                 $use_notify = 0;
