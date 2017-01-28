@@ -53,8 +53,8 @@ use Glib::Object::Introspection;
 use List::Util qw(max);
 
 our $use_notify = 1;
-my $icon;
 my $old_state = 0;
+my $icon = Gtk3::StatusIcon->new();
 
 eval {
     Glib::Object::Introspection->setup(
@@ -71,7 +71,6 @@ if ($@) {
     Systray::Mdstat::Notify->init();
 }
 
-$icon = Gtk3::StatusIcon->new();
 check_mdstat();
 Glib::Timeout->add_seconds(3, \&check_mdstat);
 Gtk3->main();
@@ -84,9 +83,9 @@ sub check_mdstat {
     my $state = 0;
     my $text = '';
 
-    open(MDSTAT, '<', "/proc/mdstat") or die "Can't read from /proc/mdstat: $!";
     my $last_md = '';
-    while (<MDSTAT>) {
+    open(my $MDSTAT, '<', "/proc/mdstat") or die "Can't read from /proc/mdstat: $!";
+    while (<$MDSTAT>) {
         if (/^(md\d+) *: /) {
             $last_md = $1;
             $text .= "; " unless $text eq '';
@@ -104,7 +103,7 @@ sub check_mdstat {
             $text .= "$last_md: DEGRADED";
         }
     }
-    close MDSTAT;
+    close $MDSTAT;
 
     $icon->set_visible(1);
     $icon->set_tooltip_text($text);
@@ -147,11 +146,13 @@ sub check_mdstat {
         }
         $old_state = $state;
     }
+
+    return;
 }
 
 sub find_icon_path {
-    my $icon = shift;
-    my $filename = "$icon.png";
+    my $basename = shift;
+    my $filename = "$basename.png";
     my $fullpath;
     foreach my $path (qw(
                       images
