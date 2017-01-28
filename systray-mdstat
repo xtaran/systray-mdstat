@@ -55,6 +55,7 @@ use List::Util qw(max);
 our $use_notify = 1;
 my $old_state = 0;
 my $icon = Gtk3::StatusIcon->new();
+$icon->set_visible(1);
 
 eval {
     Glib::Object::Introspection->setup(
@@ -105,7 +106,6 @@ sub check_mdstat {
     }
     close $MDSTAT;
 
-    $icon->set_visible(1);
     $icon->set_tooltip_text($text);
     if ($state == 0) {
         $icon->set_from_file(find_icon_path("harddrivespare"));
