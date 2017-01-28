@@ -1,5 +1,5 @@
 systray-mdstat (0.1-1) UNRELEASED; urgency=medium
 
-  * Initial release (Closes: #nnnn)
+  * Initial release (Closes: #852948)
 
  -- Axel Beckert <abe@debian.org>  Fri, 27 Jan 2017 23:48:53 +0100
