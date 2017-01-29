@@ -31,6 +31,10 @@ Requirements
   * [Glib::Object::Introspection](https://metacpan.org/pod/Glib::Object::Introspection)
   * [List::Util](https://metacpan.org/pod/List::Util)
   * [Try::Tiny](https://metacpan.org/pod/Try::Tiny)
+  * [File::ShareDir](https://metacpan.org/pod/File::ShareDir) to run
+    and
+    [File::ShareDir::Install](https://metacpan.org/pod/File::ShareDir::Install)
+    to build and install.
 
 
 Author, Copyright and License
