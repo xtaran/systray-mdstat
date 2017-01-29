@@ -3,6 +3,7 @@ Section: utils
 Priority: extra
 Maintainer: Axel Beckert <abe@debian.org>
 Build-Depends: debhelper (>= 9),
+               libfile-sharedir-install-perl,
                perl
 Standards-Version: 3.9.8
 Homepage: https://github.com/xtaran/systray-mdstat#readme
@@ -12,6 +13,7 @@ Vcs-Browser: https://github.com/xtaran/systray-mdstat
 Package: systray-mdstat
 Architecture: all
 Depends: ${misc:Depends},
+         libfile-sharedir-perl,
          libgtk3-perl,
          libtry-tiny-perl,
          perl
