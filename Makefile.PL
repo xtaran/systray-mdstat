@@ -9,8 +9,8 @@ WriteMakefile(
     NAME          => 'App::Systray::Mdstat',
     VERSION_FROM  => 'systray-mdstat', # finds \$VERSION
     AUTHOR        => 'Axel Beckert (abe@deuxchevaux.org)',
-    LICENSE       => 'gpl3+',
-    ABSTRACT_FROM => 'systray-mdstat',
+    LICENSE       => 'gpl_3',
+    ABSTRACT      => 'small system tray icon which shows the state of local md RAIDs',
     EXE_FILES     => [qw[systray-mdstat]],
 );
 
