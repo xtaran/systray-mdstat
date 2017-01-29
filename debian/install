@@ -1,3 +1,1 @@
-systray-mdstat usr/bin/
-images/* usr/share/systray-mdstat/
 systray-mdstat.desktop /etc/xdg/autostart/

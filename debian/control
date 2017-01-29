@@ -2,7 +2,8 @@ Source: systray-mdstat
 Section: utils
 Priority: extra
 Maintainer: Axel Beckert <abe@debian.org>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9),
+               perl
 Standards-Version: 3.9.8
 Homepage: https://github.com/xtaran/systray-mdstat#readme
 Vcs-Git: https://github.com/xtaran/systray-mdstat.git

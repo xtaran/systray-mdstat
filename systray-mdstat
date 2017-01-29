@@ -52,6 +52,7 @@ use Gtk3 -init;
 use Glib::Object::Introspection;
 use List::Util qw(max);
 use Try::Tiny;
+use File::ShareDir ':ALL';
 
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
@@ -153,7 +154,8 @@ sub find_icon_path {
                       images
                       /usr/local/share/systray-mdstat
                       /usr/share/systray-mdstat
-                      )) {
+                      ),
+                      dist_dir('App-Systray-Mdstat')) {
         if (-r "$path/$filename") {
             $fullpath = "$path/$filename";
             last;
