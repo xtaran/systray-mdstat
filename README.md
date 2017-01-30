@@ -1,9 +1,9 @@
 systray-mdstat
 ==============
 
-`systray-mdstat` is a small system tray icon indicating the state of
-local [Linux Software (MD) RAID](https://raid.wiki.kernel.org/) by
-checking `/proc/mdstat` periodically.
+`systray-mdstat` is a system tray icon indicating the state of local
+[Linux Software (MD) RAID](https://raid.wiki.kernel.org/) by checking
+`/proc/mdstat` periodically.
 
 It works at least on Linux and should work with any
 [freedesktop.org-compliant status area (aka system tray)](https://specifications.freedesktop.org/systemtray-spec/latest/).

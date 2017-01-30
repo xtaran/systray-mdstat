@@ -6,7 +6,7 @@ use 5.010;
 
 # VERSION
 # PODNAME: systray-mdstat
-# ABSTRACT: small system tray icon which shows the state of local MD RAIDs
+# ABSTRACT: system tray icon which shows the state of local MD RAIDs
 
 =head1 SYNOPSIS
 
