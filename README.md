@@ -36,6 +36,17 @@ Requirements
     [File::ShareDir::Install](https://metacpan.org/pod/File::ShareDir::Install)
     to build and install.
 
+### Building from a Git Checkout
+
+* Requires [Dist::Zilla](http://dzil.org/). Once Dist::Zilla is
+  installed, running `dzil authordeps` will list the additionally
+  needed Dist::Zilla plugins.
+
+* Building the Debian package from Git source requires the above plus
+  [dh-dist-zilla](https://github.com/elmar/dh-dist-zilla) (which is
+  also available as binary package in more recent releases of Debian
+  and Ubuntu.
+
 
 Author, Copyright and License
 -----------------------------
