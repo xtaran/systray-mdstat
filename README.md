@@ -11,7 +11,7 @@ It works at least on Linux and should work with any
 Use Case
 --------
 
-The use cases for this utility is probably rather restricted:
+The use cases for this utility are probably rather restricted:
 
 * Desktop or laptop with
   [Linux Software RAID](https://raid.wiki.kernel.org/) (i.e. at least
