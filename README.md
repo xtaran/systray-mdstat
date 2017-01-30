@@ -75,7 +75,7 @@ for an [online copy](https://www.gnu.org/licenses/gpl-3.0).
   small to make their copyright apply, hence I'm not bound to the
   licenses they used for their code.)
 
-* The icons in the subdirectory [images](images/) were taken from the
+* The icons in the subdirectory [share](share/) were taken from the
   [dmraid plugin of phpsysinfo](https://github.com/phpsysinfo/phpsysinfo/tree/master/plugins/dmraid/gfx)
   and are licensed
   [at least under the GNU GPL version 2](https://github.com/phpsysinfo/phpsysinfo/blob/master/COPYING),

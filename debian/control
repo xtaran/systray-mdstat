@@ -4,7 +4,13 @@ Priority: extra
 Maintainer: Axel Beckert <abe@debian.org>
 Build-Depends: debhelper (>= 9),
                libfile-sharedir-install-perl,
-               perl
+               dh-dist-zilla,
+               libdist-zilla-plugin-git-perl,
+               libdist-zilla-plugin-githubmeta-perl,
+               libdist-zilla-plugin-ourpkgversion-perl,
+               libdist-zilla-plugin-podweaver-perl,
+               libdist-zilla-plugin-test-kwalitee-perl,
+               libdist-zilla-plugin-test-perl-critic-perl
 Standards-Version: 3.9.8
 Homepage: https://github.com/xtaran/systray-mdstat#readme
 Vcs-Git: https://github.com/xtaran/systray-mdstat.git

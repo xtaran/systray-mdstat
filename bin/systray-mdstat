@@ -4,12 +4,9 @@ use strict;
 use warnings;
 use 5.010;
 
-my
-$VERSION = '0.1';
-
-=head1 NAME
-
-systray-mdstat - small system tray icon which shows the state of local md RAIDs
+# VERSION
+# PODNAME: systray-mdstat
+# ABSTRACT: small system tray icon which shows the state of local md RAIDs
 
 =head1 SYNOPSIS
 
@@ -20,9 +17,7 @@ systray-mdstat
 This program allows one to display an icon indicating the state of
 local md RAIDs in any freedesktop.org-compliant status area.
 
-=head1 AUTHOR
-
-Axel Beckert L<mailto:abe@deuxchevaux.org>
+=head1 NOTES ABOUT THE ORIGIN OF SOME OF THE CODE
 
 Very loosely based on the outer framework of fdpowermon by Wouter
 Verhelst under Poul-Henning Kamp's "Beer-ware" license, and the mdstat
@@ -30,22 +25,6 @@ check from Debian's hobbit-plugins package written by Christoph Berg
 under the MIT license. (Both stated that the amount of code I copied
 is too small to make their copyright apply, hence I'm not bound to the
 licenses they used for their code.)
-
-=head1 LICENSE
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at
-your option) any later version.
-
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
-
-You should have received a copy of the GNU Library General Public
-License along with this library. If not, see
-<http://www.gnu.org/licenses/>.
 
 =cut
 
