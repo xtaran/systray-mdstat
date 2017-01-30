@@ -6,7 +6,7 @@ use 5.010;
 
 # VERSION
 # PODNAME: systray-mdstat
-# ABSTRACT: small system tray icon which shows the state of local md RAIDs
+# ABSTRACT: small system tray icon which shows the state of local MD RAIDs
 
 =head1 SYNOPSIS
 
@@ -15,7 +15,8 @@ systray-mdstat
 =head1 DESCRIPTION
 
 This program allows one to display an icon indicating the state of
-local md RAIDs in any freedesktop.org-compliant status area.
+local Linux Software (MD) RAIDs in any freedesktop.org-compliant
+status area.
 
 =head1 NOTES ABOUT THE ORIGIN OF SOME OF THE CODE
 
