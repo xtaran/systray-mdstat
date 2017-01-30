@@ -47,6 +47,12 @@ Requirements
   also available as binary package in more recent releases of Debian
   and Ubuntu.
 
+Similar Tools
+-------------
+
+* [diskmonitor for KDE](https://github.com/papylhomme/diskmonitor):
+  Monitors both, SMART and MD RAID health status.
+
 
 Author, Copyright and License
 -----------------------------
