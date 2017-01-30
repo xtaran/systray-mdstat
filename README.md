@@ -45,7 +45,8 @@ Requirements
 * Building the Debian package from Git source requires the above plus
   [dh-dist-zilla](https://github.com/elmar/dh-dist-zilla) (which is
   also available as binary package in more recent releases of Debian
-  and Ubuntu.
+  and Ubuntu). Running `dpkg-checkbuilddeps` in the cloned git
+  repository will list all missing build dependencies.
 
 Similar Tools
 -------------
