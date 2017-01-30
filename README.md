@@ -30,7 +30,8 @@ Requirements
 * a bunch of Perl modules:
   * [Gtk3](https://metacpan.org/pod/Gtk3)
   * [Glib::Object::Introspection](https://metacpan.org/pod/Glib::Object::Introspection)
-  * [List::Util](https://metacpan.org/pod/List::Util)
+  * [List::Util](https://metacpan.org/pod/List::Util) (part of Perl's core)
+  * [Pod::Usage](https://metacpan.org/pod/Pod::Usage) (part of Perl's core)
   * [Try::Tiny](https://metacpan.org/pod/Try::Tiny)
   * [File::ShareDir](https://metacpan.org/pod/File::ShareDir) to run
     and

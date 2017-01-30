@@ -10,7 +10,7 @@ use 5.010;
 
 =head1 SYNOPSIS
 
-systray-mdstat
+B<systray-mdstat> [ B<-h> | B<--help> | B<--usage> ]
 
 =head1 DESCRIPTION
 
@@ -38,6 +38,22 @@ use Glib::Object::Introspection;
 use List::Util qw(max);
 use Try::Tiny;
 use File::ShareDir ':ALL';
+use Pod::Usage;
+
+if (@ARGV and ($ARGV[0] eq '--help'  or
+               $ARGV[0] eq '-h')) {
+    pod2usage(0);
+} elsif (@ARGV and $ARGV[0] eq '--usage') {
+    pod2usage(
+        -verbose => 2,
+        -exitval => 0,
+        );
+} elsif (@ARGV) {
+    pod2usage(
+        -message => "E: $0 takes no arguments\n",
+        -exitval => 1,
+        );
+}
 
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
