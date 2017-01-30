@@ -18,6 +18,10 @@ This program allows one to display an icon indicating the state of
 local Linux Software (MD) RAIDs in any freedesktop.org-compliant
 status area.
 
+=head1 SEE ALSO
+
+L<smart-notifier(1)>
+
 =head1 NOTES ABOUT THE ORIGIN OF SOME OF THE CODE
 
 Very loosely based on the outer framework of fdpowermon by Wouter

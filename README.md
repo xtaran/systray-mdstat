@@ -8,6 +8,7 @@ systray-mdstat
 It works at least on Linux and should work with any
 [freedesktop.org-compliant status area (aka system tray)](https://specifications.freedesktop.org/systemtray-spec/latest/).
 
+
 Use Case
 --------
 
@@ -47,6 +48,17 @@ Requirements
   also available as binary package in more recent releases of Debian
   and Ubuntu). Running `dpkg-checkbuilddeps` in the cloned git
   repository will list all missing build dependencies.
+
+
+Companion Tools
+---------------
+
+* smart-notifier (website gone,
+  [available in Debian](https://packages.debian.org/stable/smart-notifier),
+  historic sources also available
+  [via snapshot.debian.org](http://snapshot.debian.org/package/smart-notifier/):
+  Notifies about S.M.A.R.T. changes your hard disks.
+
 
 Similar Tools
 -------------
