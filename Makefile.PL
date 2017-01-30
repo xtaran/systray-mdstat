@@ -12,6 +12,17 @@ WriteMakefile(
     LICENSE       => 'gpl_3',
     ABSTRACT      => 'small system tray icon which shows the state of local md RAIDs',
     EXE_FILES     => [qw[systray-mdstat]],
+    PREREQ_PM     => {
+        'Gtk3' => 0,
+        'Glib::Object::Introspection' => 0,
+        'List::Util' => 0,
+        'Try::Tiny' => 0,
+        'File::ShareDir' => 0,
+    },
+    CONFIGURE_REQUIRES => {
+        'ExtUtils::MakeMaker' => 0,
+        'File::ShareDir::Install' => 0,
+    },
 );
 
 package MY;
