@@ -81,6 +81,19 @@ try {
     $use_notify = 0;
 };
 
+my @icon_dirs = qw(
+    share
+    /usr/local/share/systray-mdstat
+    /usr/share/systray-mdstat
+    );
+
+# Unfortunately File::ShareDir functions die instead of returning
+# undef if they can't find an according directory.
+try {
+    push(@icon_dirs, dist_dir('App-Systray-Mdstat'));
+}
+
+
 check_mdstat();
 Glib::Timeout->add_seconds(3, \&check_mdstat);
 Gtk3->main();
@@ -151,12 +164,7 @@ sub find_icon_path {
     my $basename = shift;
     my $filename = "$basename.png";
     my $fullpath;
-    foreach my $path (qw(
-                      share
-                      /usr/local/share/systray-mdstat
-                      /usr/share/systray-mdstat
-                      ),
-                      dist_dir('App-Systray-Mdstat')) {
+    foreach my $path (@icon_dirs) {
         if (-r "$path/$filename") {
             $fullpath = "$path/$filename";
             last;
