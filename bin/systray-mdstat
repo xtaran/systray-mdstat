@@ -107,25 +107,32 @@ sub check_mdstat {
     my $text = '';
 
     my $last_md = '';
-    open(my $MDSTAT, '<', "/proc/mdstat") or die "Can't read from /proc/mdstat: $!";
-    while (my $line = <$MDSTAT>) {
-        if ($line =~ /^(md\d+) *: /) {
-            $last_md = $1;
-            $text .= "; " unless $text eq '';
-        } else {
-            foreach my $check (@mdstat_checks) {
-                if ($line =~ $check->[0]) {
-                    $state = max($state, $check->[1]);
-                    if ($check->[2] =~ /\%/) {
-                        $text .= sprintf($check->[2], $&);
-                    } else {
-                        $text .= "$last_md: ".$check->[2];
+    if (-e '/proc/mdstat') {
+        open(my $MDSTAT, '<', "/proc/mdstat")
+            or die "Can't read from /proc/mdstat despite it exists: $!";
+        while (my $line = <$MDSTAT>) {
+            if ($line =~ /^(md\d+) *: /) {
+                $last_md = $1;
+                $text .= "; " unless $text eq '';
+            } else {
+                foreach my $check (@mdstat_checks) {
+                    if ($line =~ $check->[0]) {
+                        $state = max($state, $check->[1]);
+                        if ($check->[2] =~ /\%/) {
+                            $text .= sprintf($check->[2], $&);
+                        } else {
+                            $text .= "$last_md: ".$check->[2];
+                        }
                     }
                 }
             }
         }
+        close $MDSTAT;
+        $text = "/proc/mdstat exists but doesn't contain any RAID."
+            unless $text;
+    } else {
+        $text = "No /proc/mdstat found";
     }
-    close $MDSTAT;
 
     $icon->set_tooltip_text($text);
     $icon->set_from_file(find_icon_path("harddrive".$states[$state]));
