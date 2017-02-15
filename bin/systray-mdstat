@@ -152,7 +152,7 @@ sub find_icon_path {
     my $filename = "$basename.png";
     my $fullpath;
     foreach my $path (qw(
-                      images
+                      share
                       /usr/local/share/systray-mdstat
                       /usr/share/systray-mdstat
                       ),
