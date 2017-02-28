@@ -1,2 +1,7 @@
 *~
 /.build/
+/debian/*stamp
+/debian/*.debhelper.log
+/debian/*.substvars
+/debian/files
+/debian/systray-mdstat/
