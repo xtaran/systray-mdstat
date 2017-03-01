@@ -42,7 +42,8 @@ Requirements
 
 * Requires [Dist::Zilla](http://dzil.org/). Once Dist::Zilla is
   installed, running `dzil authordeps` will list the additionally
-  needed Dist::Zilla plugins.
+  needed Dist::Zilla plugins. After installing them, use `dzil build`
+  to get a tar ball usable with any CPAN-compatible toolset.
 
 * Building the Debian package from Git source requires the above plus
   [dh-dist-zilla](https://github.com/elmar/dh-dist-zilla) (which is
