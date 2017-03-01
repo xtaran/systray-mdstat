@@ -1,5 +1,5 @@
-systray-mdstat (0.1-1) UNRELEASED; urgency=medium
+systray-mdstat (1.0.0-1) unstable; urgency=low
 
   * Initial release (Closes: #852948)
 
- -- Axel Beckert <abe@debian.org>  Fri, 27 Jan 2017 23:48:53 +0100
+ -- Axel Beckert <abe@debian.org>  Wed, 01 Mar 2017 01:44:00 +0100

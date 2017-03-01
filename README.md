@@ -69,6 +69,13 @@ Similar Tools
   Monitors both, SMART and MD RAID health status.
 
 
+Version Number Scheme
+---------------------
+
+systray-mdstat adheres to [Semantic Versioning](http://semver.org/),
+hence all version numbers have the scheme _Break.Feature.Bugfix_.
+
+
 Author, Copyright and License
 -----------------------------
 
