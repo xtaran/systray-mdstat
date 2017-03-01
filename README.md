@@ -111,4 +111,4 @@ for an [online copy](https://www.gnu.org/licenses/gpl-3.0).
   and are licensed
   [at least under the GNU GPL version 2](https://github.com/phpsysinfo/phpsysinfo/blob/master/COPYING),
   but
-  [likely alternatively also under any later version of the GNU GPL](http://metadata.ftp-master.debian.org/changelogs/main/p/phpsysinfo/unstable_copyright).
+  [maybe also under other versions of the GNU GPL](https://github.com/phpsysinfo/phpsysinfo/issues/156).

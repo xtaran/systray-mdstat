@@ -7,6 +7,17 @@ Files: *
 Copyright: 2017 Axel Beckert <abe@deuxchevaux.org>
 License: GPL-3+
 
+Files: share/*
+Copyright: 2008-2014 Michael Cramer <BigMichi1@users.sourceforge.net>
+License: GPL-2
+Comment: Exact GPL version currently unclear, see
+ https://github.com/phpsysinfo/phpsysinfo/issues/156, but "GPL 2.0
+ only" is currently common for all possible variants, so it should be
+ safe to declare those files as being under "GPL 2.0 only" for now.
+ .
+ The copyright years are based on source code comments and git history
+ in phpsysinfo's plugins/dmraid subdirectory.
+
 License: GPL-3+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -23,3 +34,19 @@ License: GPL-3+
  .
  On Debian systems, the complete text of the GNU General Public License
  version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: GPL-2
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of version 2 of the GNU General Public License as
+ published by the Free Software Foundation.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 2 can be found in "/usr/share/common-licenses/GPL-2".
