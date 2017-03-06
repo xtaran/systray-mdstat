@@ -90,8 +90,8 @@ my @icon_dirs = qw(
 # Unfortunately File::ShareDir functions die instead of returning
 # undef if they can't find an according directory.
 try {
-    push(@icon_dirs, dist_dir('App-Systray-Mdstat'));
-}
+    push(@icon_dirs, dist_dir('systray-mdstat'));
+};
 
 
 check_mdstat();
