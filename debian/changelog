@@ -1,10 +1,10 @@
-systray-mdstat (1.0.1-1) UNRELEASED; urgency=low
+systray-mdstat (1.0.1-1) unstable; urgency=low
 
-  * New upstream release.
+  * New upstream bugfix release.
     + Fixes dist name for File::ShareDir. Thanks Damyan Ivanov!
        (Closes: #856925)
 
- -- Axel Beckert <abe@debian.org>  Mon, 06 Mar 2017 21:58:09 +0100
+ -- Axel Beckert <abe@debian.org>  Mon, 06 Mar 2017 23:48:18 +0100
 
 systray-mdstat (1.0.0-1) unstable; urgency=low
 
