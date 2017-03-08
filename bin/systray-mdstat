@@ -158,7 +158,7 @@ sub check_mdstat {
         $message = "$proc_mdstat state changed: ".$text;
     }
     if ($state != $old_state) {
-        &send_notification("Software RAID State", $message);
+        &send_notification($icon, "Software RAID State", $message);
         $old_state = $state;
     }
 
@@ -173,28 +173,34 @@ sub update_icon {
         $icon->set_tooltip_text($text);
         $icon->set_from_file($path);
     } else {
-        say "DEBUG: text=$text path=$path";
+        return "UPDATE ICON: text=$text path=$path";
     }
 }
 
 sub send_notification {
-    my ($title, $text) = @_;
-    if ($use_notify) {
-        my $notif = Systray::Mdstat::Notify::Notification->new(
-            $title, $text);
-        try {
-            $notif->show;
-        } catch {
-            # Something went wrong trying to show a notification
-            # message. Fall back to using a dialog box instead.
-            $use_notify = 0;
-        };
-    }
-    if (!$use_notify) {
-        my $dialog = Gtk3::MessageDialog->new(
-            undef, 'destroy-with-parent', 'warning', 'ok', $text);
-        $dialog->run;
-        $dialog->destroy;
+    my ($icon, $title, $text) = @_;
+
+    # Check if we're running under a GUI by looking at $icon
+    if ($icon) {
+        if ($use_notify) {
+            my $notif = Systray::Mdstat::Notify::Notification->new(
+                $title, $text);
+            try {
+                $notif->show;
+            } catch {
+                # Something went wrong trying to show a notification
+                # message. Fall back to using a dialog box instead.
+                $use_notify = 0;
+            };
+        }
+        if (!$use_notify) {
+            my $dialog = Gtk3::MessageDialog->new(
+                undef, 'destroy-with-parent', 'warning', 'ok', $text);
+            $dialog->run;
+            $dialog->destroy;
+        }
+    } else {
+        return "NOTIFY: title=$title text=$text";
     }
 }
 
