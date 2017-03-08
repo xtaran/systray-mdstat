@@ -58,19 +58,25 @@ my $icon;
 main() unless caller(0);
 
 sub main {
+    use Getopt::Long qw( :config no_auto_abbrev );
     use Gtk3 -init;
     use Glib::Object::Introspection;
     use Pod::Usage;
 
-    if (@ARGV and ($ARGV[0] eq '--help'  or
-                   $ARGV[0] eq '-h')) {
-        pod2usage(0);
-    } elsif (@ARGV and $ARGV[0] eq '--usage') {
-        pod2usage(
+    my $help;
+    my $usage;
+    GetOptions(
+        'help|h'        => \$help,
+        'usage'         => \$usage,
+        ) or exit 1;
+
+    pod2usage(0) if $help;
+    pod2usage(
             -verbose => 2,
             -exitval => 0,
-            );
-    } elsif (@ARGV) {
+        ) if $usage;
+
+    if (@ARGV) {
         pod2usage(
             -message => "E: $0 takes no arguments\n",
             -exitval => 1,
