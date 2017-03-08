@@ -37,6 +37,7 @@ use List::Util qw(max);
 use File::ShareDir ':ALL';
 use Try::Tiny;
 
+my $proc_mdstat = '/proc/mdstat';
 my @icon_dirs = qw(
     share
     /usr/local/share/systray-mdstat
@@ -68,6 +69,7 @@ sub main {
     GetOptions(
         'help|h'        => \$help,
         'usage'         => \$usage,
+        'read-from=s'   => \$proc_mdstat,
         ) or exit 1;
 
     pod2usage(0) if $help;
@@ -120,9 +122,9 @@ sub check_mdstat {
     my $text = '';
 
     my $last_md = '';
-    if (-e '/proc/mdstat') {
-        open(my $MDSTAT, '<', "/proc/mdstat")
-            or die "Can't read from /proc/mdstat despite it exists: $!";
+    if (-e $proc_mdstat) {
+        open(my $MDSTAT, '<', $proc_mdstat)
+            or die "Can't read from $proc_mdstat despite it exists: $!";
         while (my $line = <$MDSTAT>) {
             if ($line =~ /^(md\d+) *: /) {
                 $last_md = $1;
@@ -141,10 +143,10 @@ sub check_mdstat {
             }
         }
         close $MDSTAT;
-        $text = "/proc/mdstat exists but doesn't contain any RAID."
+        $text = "$proc_mdstat exists but doesn't contain any RAID."
             unless $text;
     } else {
-        $text = "No /proc/mdstat found";
+        $text = "No $proc_mdstat found";
     }
 
     $icon->set_tooltip_text($text);
@@ -152,9 +154,9 @@ sub check_mdstat {
 
     my $message;
     if ($old_state == 0 and $state != 0) {
-        $message = "Current /proc/mdstat state: ".$text;
+        $message = "Current $proc_mdstat state: ".$text;
     } else {
-        $message = "/proc/mdstat state changed: ".$text;
+        $message = "$proc_mdstat state changed: ".$text;
     }
     if ($state != $old_state) {
         if ($use_notify) {
