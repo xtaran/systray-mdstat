@@ -33,28 +33,15 @@ hence I'm not bound to the licenses they used for their code.)
 
 =cut
 
-use Gtk3 -init;
-use Glib::Object::Introspection;
 use List::Util qw(max);
-use Try::Tiny;
 use File::ShareDir ':ALL';
-use Pod::Usage;
+use Try::Tiny;
 
-if (@ARGV and ($ARGV[0] eq '--help'  or
-               $ARGV[0] eq '-h')) {
-    pod2usage(0);
-} elsif (@ARGV and $ARGV[0] eq '--usage') {
-    pod2usage(
-        -verbose => 2,
-        -exitval => 0,
-        );
-} elsif (@ARGV) {
-    pod2usage(
-        -message => "E: $0 takes no arguments\n",
-        -exitval => 1,
-        );
-}
-
+my @icon_dirs = qw(
+    share
+    /usr/local/share/systray-mdstat
+    /usr/share/systray-mdstat
+    );
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
     # regular expression  => state => string
@@ -66,37 +53,57 @@ my @mdstat_checks = (
 
 our $use_notify = 1;
 my $old_state = 0;
-my $icon = Gtk3::StatusIcon->new();
-$icon->set_visible(1);
+my $icon;
 
-try {
-    Glib::Object::Introspection->setup(
-        basename => 'Notify',
-        version => '0.7',
-        package => "Systray::Mdstat::Notify",
-        );
-    Systray::Mdstat::Notify->init();
-} catch {
-    say "no notify because setup failed: $@";
-    $use_notify = 0;
-};
+main() unless caller(0);
 
-my @icon_dirs = qw(
-    share
-    /usr/local/share/systray-mdstat
-    /usr/share/systray-mdstat
-    );
+sub main {
+    use Gtk3 -init;
+    use Glib::Object::Introspection;
+    use Pod::Usage;
 
-# Unfortunately File::ShareDir functions die instead of returning
-# undef if they can't find an according directory.
-try {
-    push(@icon_dirs, dist_dir('systray-mdstat'));
-};
+    if (@ARGV and ($ARGV[0] eq '--help'  or
+                   $ARGV[0] eq '-h')) {
+        pod2usage(0);
+    } elsif (@ARGV and $ARGV[0] eq '--usage') {
+        pod2usage(
+            -verbose => 2,
+            -exitval => 0,
+            );
+    } elsif (@ARGV) {
+        pod2usage(
+            -message => "E: $0 takes no arguments\n",
+            -exitval => 1,
+            );
+    }
+
+    $icon = Gtk3::StatusIcon->new();
+    $icon->set_visible(1);
+
+    try {
+        Glib::Object::Introspection->setup(
+            basename => 'Notify',
+            version => '0.7',
+            package => "Systray::Mdstat::Notify",
+            );
+        Systray::Mdstat::Notify->init();
+    } catch {
+        say "no notify because setup failed: $@";
+        $use_notify = 0;
+    };
+
+    # Unfortunately File::ShareDir functions die instead of returning
+    # undef if they can't find an according directory.
+
+    try {
+        push(@icon_dirs, dist_dir('systray-mdstat'));
+    };
 
 
-check_mdstat();
-Glib::Timeout->add_seconds(3, \&check_mdstat);
-Gtk3->main();
+    check_mdstat();
+    Glib::Timeout->add_seconds(3, \&check_mdstat);
+    Gtk3->main();
+}
 
 sub check_mdstat {
     # 0 = unknown
