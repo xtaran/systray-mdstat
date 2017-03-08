@@ -149,8 +149,7 @@ sub check_mdstat {
         $text = "No $proc_mdstat found";
     }
 
-    $icon->set_tooltip_text($text);
-    $icon->set_from_file(find_icon_path("harddrive".$states[$state]));
+    &update_icon($icon, $text, $state);
 
     my $message;
     if ($old_state == 0 and $state != 0) {
@@ -180,6 +179,18 @@ sub check_mdstat {
     }
 
     return;
+}
+
+sub update_icon {
+    my ($icon, $text, $state) = @_;
+    my $path = find_icon_path("harddrive".$states[$state]);
+
+    if ($icon) {
+        $icon->set_tooltip_text($text);
+        $icon->set_from_file($path);
+    } else {
+        say "DEBUG: text=$text path=$path";
+    }
 }
 
 sub find_icon_path {
