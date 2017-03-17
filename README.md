@@ -26,7 +26,7 @@ The use cases for this utility are probably rather restricted:
 Requirements
 ------------
 
-* [Perl](https://www.perl.org/) ≥ 5.10
+* [Perl 5](https://www.perl.org/) ≥ 5.10
 * a bunch of Perl modules:
   * [Gtk3](https://metacpan.org/pod/Gtk3)
   * [Glib::Object::Introspection](https://metacpan.org/pod/Glib::Object::Introspection)
