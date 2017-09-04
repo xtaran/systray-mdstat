@@ -61,6 +61,7 @@ main() unless caller(0);
 sub main {
     use Getopt::Long qw( :config no_auto_abbrev );
     use Gtk3 -init;
+    use Glib qw(TRUE FALSE);
     use Glib::Object::Introspection;
     use Pod::Usage;
 
@@ -169,7 +170,9 @@ sub check_mdstat {
         $old_state = $state;
     }
 
-    return;
+    # Return explicitly true so that Gtk3 continues to run this
+    # function.
+    return TRUE;
 }
 
 sub update_icon {
