@@ -46,10 +46,10 @@ my @icon_dirs = qw(
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
     # regular expression  => state => string
-    [ qr/\[U+\]/          => 1     => 'OK'       ],
-    [ qr/(resync|verify)/ => 2     => ' (%s)'    ],
-    [ qr/\(F\)/           => 3     => 'FAILED'   ],
-    [ qr/\[U*_U*\]/       => 3     => 'DEGRADED' ],
+    [ qr/\[U+\]/                => 1     => 'OK'       ],
+    [ qr/(resync|verify|check)/ => 2     => ' (%s)'    ],
+    [ qr/\(F\)/                 => 3     => 'FAILED'   ],
+    [ qr/\[U*_U*\]/             => 3     => 'DEGRADED' ],
     );
 
 our $use_notify = 1;
@@ -131,10 +131,11 @@ sub check_mdstat {
                 $text .= "; " unless $text eq '';
             } else {
                 foreach my $check (@mdstat_checks) {
+                    my $use_format = $check->[2] =~ /\%/;
                     if ($line =~ $check->[0]) {
                         $state = max($state, $check->[1]);
-                        if ($check->[2] =~ /\%/) {
-                            $text .= sprintf($check->[2], $&);
+                        if ($use_format) {
+                            $text .= sprintf($check->[2], $1);
                         } else {
                             $text .= "$last_md: ".$check->[2];
                         }
