@@ -5,3 +5,4 @@
 /debian/*.substvars
 /debian/files
 /debian/systray-mdstat/
+/debian/.debhelper/
