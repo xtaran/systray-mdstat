@@ -3,3 +3,6 @@
 
 %:
 	dh $@ --with dist_zilla
+
+override_dh_auto_test:
+	xvfb-run dh_auto_test -D .build/debian-build
