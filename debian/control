@@ -13,6 +13,10 @@ Build-Depends: debhelper (>= 9),
                libdist-zilla-plugin-podweaver-perl,
                libdist-zilla-plugin-test-kwalitee-perl,
                libdist-zilla-plugin-test-perl-critic-perl,
+               libfile-sharedir-perl <!nocheck>,
+               libgtk3-perl <!nocheck>,
+               libtry-tiny-perl <!nocheck>,
+               xauth <!nocheck>,
                xvfb <!nocheck>
 Standards-Version: 4.1.0
 Homepage: https://github.com/xtaran/systray-mdstat#readme

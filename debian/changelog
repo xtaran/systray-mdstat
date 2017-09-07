@@ -7,7 +7,8 @@ systray-mdstat (1.0.2-1) UNRELEASED; urgency=medium
     + Emphasizes bad states in notification.
     + Drop never used icon directory locations from being searched.
     + Adds a test suite and the infrastructure for it.
-      - Add build-dependencies on libfile-which-perl and xvfb.
+      - Add build-dependencies on libfile-which-perl, xauth and xvfb as
+        well as systray-mdstat's normal runtine dependencies.
   * Fix missed placeholder in debian/watch.
   * Declare compliance with Debian Policy 4.1.0. No changes needed.
   * Support the nocheck build profile.
