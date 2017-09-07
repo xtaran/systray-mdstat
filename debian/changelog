@@ -17,6 +17,7 @@ systray-mdstat (1.0.2-1) UNRELEASED; urgency=medium
     + Factor out dynamic population of @icon_dirs.
     + Include searched icon directories in error message.
   * Symlink changelog.Debian.gz to changelog.gz — it's both in one file.
+  * Add upstream signing key and verify it in debian/watch.
 
  -- Axel Beckert <abe@debian.org>  Fri, 17 Mar 2017 02:12:40 +0100
 
