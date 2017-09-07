@@ -101,18 +101,21 @@ sub main {
         $use_notify = 0;
     };
 
-    # Unfortunately File::ShareDir functions die instead of returning
-    # undef if they can't find an according directory.
-
-    try {
-        push(@icon_dirs, dist_dir('systray-mdstat'));
-    };
-
+    populate_icon_dirs();
 
     check_mdstat();
     Glib::Timeout->add_seconds(3, \&check_mdstat);
     Gtk3->main();
 }
+
+sub populate_icon_dirs {
+    # Unfortunately File::ShareDir functions die instead of returning
+    # undef if they can't find an according directory.
+    try {
+        push(@icon_dirs, dist_dir('systray-mdstat'));
+    };
+}
+
 
 sub read_and_parse_mdstat {
     # 0 = unknown
@@ -224,6 +227,7 @@ sub find_icon_path {
             last;
         }
     }
-    die "Icon $filename not found" unless $fullpath;
+    die "Icon $filename not found inside ".join(', ', @icon_dirs)
+        unless $fullpath;
     return $fullpath;
 }

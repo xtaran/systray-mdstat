@@ -18,6 +18,7 @@ Standards-Version: 4.1.0
 Homepage: https://github.com/xtaran/systray-mdstat#readme
 Vcs-Git: https://github.com/xtaran/systray-mdstat.git
 Vcs-Browser: https://github.com/xtaran/systray-mdstat
+Testsuite: autopkgtest-pkg-perl
 
 Package: systray-mdstat
 Architecture: all

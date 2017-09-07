@@ -8,6 +8,10 @@ systray-mdstat (1.0.2-1) UNRELEASED; urgency=medium
   * Fix missed placeholder in debian/watch.
   * Declare compliance with Debian Policy 4.1.0. No changes needed.
   * Support the nocheck build profile.
+  * Make package as being autopkgtestable (pkg-perl style)
+    + Add Testsuite header to debian/control.
+    + Factor out dynamic population of @icon_dirs.
+    + Include searched icon directories in error message.
 
  -- Axel Beckert <abe@debian.org>  Fri, 17 Mar 2017 02:12:40 +0100
 

@@ -7,19 +7,22 @@ use 5.010;
 use File::Which;
 use Test::More;
 
-my $script = 'bin/systray-mdstat';
+my $script = './bin/systray-mdstat';
 if (exists($ENV{ADTTMP}) or
     exists($ENV{AUTOPKGTEST_TMP})) {
     $script = which('systray-mdstat');
 }
 
 ok(-r $script, "Script $script exists and is readable");
-require_ok("./$script");
+require_ok("$script");
+
+# No testable return value
+populate_icon_dirs();
 
 foreach my $basename (qw(
     error harddrivefail harddriveok harddrivespare harddrivewarn
 )) {
-    is(find_icon_path($basename), "share/$basename.png",
+    like(find_icon_path($basename), qr(/${basename}\.png$),
        "Found $basename.png");
 }
 
