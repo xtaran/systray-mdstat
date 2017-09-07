@@ -40,8 +40,6 @@ use Try::Tiny;
 my $proc_mdstat = '/proc/mdstat';
 my @icon_dirs = qw(
     share
-    /usr/local/share/systray-mdstat
-    /usr/share/systray-mdstat
     );
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
