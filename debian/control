@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 9),
                libdist-zilla-plugin-test-kwalitee-perl,
                libdist-zilla-plugin-test-perl-critic-perl,
                xvfb
-Standards-Version: 3.9.8
+Standards-Version: 4.1.0
 Homepage: https://github.com/xtaran/systray-mdstat#readme
 Vcs-Git: https://github.com/xtaran/systray-mdstat.git
 Vcs-Browser: https://github.com/xtaran/systray-mdstat
