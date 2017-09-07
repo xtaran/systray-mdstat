@@ -1,6 +1,6 @@
-systray-mdstat (1.0.2-1) UNRELEASED; urgency=medium
+systray-mdstat (1.1.0-1) unstable; urgency=medium
 
-  * New upstream bugfix release.
+  * New upstream bugfix and minor feature release.
     + Recognizes "check" state.
     + Fixes resync/verify messages to show more than a percent sign.
     + Fixes Gtk/Glib loop which periodically runs &check_mdstat();
@@ -12,14 +12,14 @@ systray-mdstat (1.0.2-1) UNRELEASED; urgency=medium
   * Fix missed placeholder in debian/watch.
   * Declare compliance with Debian Policy 4.1.0. No changes needed.
   * Support the nocheck build profile.
-  * Make package as being autopkgtestable (pkg-perl style)
+  * Make package autopkgtestable (pkg-perl style)
     + Add Testsuite header to debian/control.
     + Factor out dynamic population of @icon_dirs.
     + Include searched icon directories in error message.
   * Symlink changelog.Debian.gz to changelog.gz — it's both in one file.
   * Add upstream signing key and verify it in debian/watch.
 
- -- Axel Beckert <abe@debian.org>  Fri, 17 Mar 2017 02:12:40 +0100
+ -- Axel Beckert <abe@debian.org>  Fri, 08 Sep 2017 01:29:39 +0200
 
 systray-mdstat (1.0.1-1) unstable; urgency=low
 
