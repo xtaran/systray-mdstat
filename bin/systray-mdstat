@@ -48,8 +48,8 @@ my @mdstat_checks = (
     # regular expression  => state => string
     [ qr/\[U+\]/                => 1     => 'OK'       ],
     [ qr/(resync|verify|check)/ => 2     => ' (%s)'    ],
-    [ qr/\(F\)/                 => 3     => 'FAILED'   ],
-    [ qr/\[U*_U*\]/             => 3     => 'DEGRADED' ],
+    [ qr/\(F\)/                 => 3     => '<b>FAILED</b>'   ],
+    [ qr/\[U*_U*\]/             => 3     => '<b>DEGRADED</b>' ],
     );
 
 our $use_notify = 1;

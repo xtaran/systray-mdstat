@@ -36,7 +36,7 @@ is($warning[1], 2,
    "read_and_parse_mdstat return correct state for warning-ish mdstat");
 
 my @degraded = read_and_parse_mdstat('t/proc/mdstat.degraded');
-is($degraded[0], "md2: DEGRADED; md1: OK; md0: OK",
+is($degraded[0], "md2: <b>DEGRADED</b>; md1: OK; md0: OK",
    "read_and_parse_mdstat return correct text for degraded-ish mdstat");
 is($degraded[1], 3,
    "read_and_parse_mdstat return correct state for degraded-ish mdstat");

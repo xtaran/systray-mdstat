@@ -4,6 +4,7 @@ systray-mdstat (1.0.2-1) UNRELEASED; urgency=medium
     + Recognizes "check" state.
     + Fixes resync/verify messages to show more than a percent sign.
     + Fixes Gtk/Glib loop which periodically runs &check_mdstat();
+    + Emphasizes bad states in notification.
   * Fix missed placeholder in debian/watch.
   * Declare compliance with Debian Policy 4.1.0. No changes needed.
   * Support the nocheck build profile.
