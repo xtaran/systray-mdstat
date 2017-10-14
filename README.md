@@ -1,6 +1,8 @@
 systray-mdstat
 ==============
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/systray-mdstat.svg)](https://repology.org/metapackage/systray-mdstat)
+
 `systray-mdstat` is a system tray icon indicating the state of local
 [Linux Software (MD) RAID](https://raid.wiki.kernel.org/) by checking
 `/proc/mdstat` periodically.
