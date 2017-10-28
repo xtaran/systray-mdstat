@@ -4,6 +4,9 @@ systray-mdstat (1.1.1-1) UNRELEASED; urgency=medium
   * Set "Rules-Requires-Root: no".
     + Add override_dh_strip_nondeterminism to call dh_fixperms before
       dh_strip_nondeterminism, too.
+  * Declare compliance with Debian Policy 4.1.1.
+    + Change priority from extra to optional. (Actually already a
+      requirement of 4.1.0.)
 
  -- Axel Beckert <abe@debian.org>  Fri, 27 Oct 2017 22:46:39 +0200
 

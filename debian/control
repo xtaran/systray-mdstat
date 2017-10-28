@@ -1,6 +1,6 @@
 Source: systray-mdstat
 Section: utils
-Priority: extra
+Priority: optional
 Maintainer: Axel Beckert <abe@debian.org>
 Build-Depends: debhelper (>= 9),
                libfile-sharedir-install-perl,
@@ -18,7 +18,7 @@ Build-Depends: debhelper (>= 9),
                libtry-tiny-perl <!nocheck>,
                xauth <!nocheck>,
                xvfb <!nocheck>
-Standards-Version: 4.1.0
+Standards-Version: 4.1.1
 Homepage: https://github.com/xtaran/systray-mdstat#readme
 Vcs-Git: https://github.com/xtaran/systray-mdstat.git
 Vcs-Browser: https://github.com/xtaran/systray-mdstat
