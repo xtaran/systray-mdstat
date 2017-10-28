@@ -1,3 +1,12 @@
+systray-mdstat (1.1.1-1) UNRELEASED; urgency=medium
+
+  * TODO: New minor upstream release with only documentation changes.
+  * Set "Rules-Requires-Root: no".
+    + Add override_dh_strip_nondeterminism to call dh_fixperms before
+      dh_strip_nondeterminism, too.
+
+ -- Axel Beckert <abe@debian.org>  Fri, 27 Oct 2017 22:46:39 +0200
+
 systray-mdstat (1.1.0-1) unstable; urgency=medium
 
   * New upstream bugfix and minor feature release.
