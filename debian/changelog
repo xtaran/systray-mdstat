@@ -1,6 +1,8 @@
 systray-mdstat (1.1.1-1) UNRELEASED; urgency=medium
 
   * TODO: New minor upstream release with only documentation changes.
+  * Bump debhelper compatibility to 10.
+    + Update versioned debhelper build-dependency accordingly.
   * Set "Rules-Requires-Root: no".
     + Add override_dh_strip_nondeterminism to call dh_fixperms before
       dh_strip_nondeterminism, too.
