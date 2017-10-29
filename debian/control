@@ -24,6 +24,7 @@ Vcs-Git: https://github.com/xtaran/systray-mdstat.git
 Vcs-Browser: https://github.com/xtaran/systray-mdstat
 Testsuite: autopkgtest-pkg-perl
 Rules-Requires-Root: no
+Build-Conflicts: dh-strip-nondeterminism (<< 0.040~)
 
 Package: systray-mdstat
 Architecture: all

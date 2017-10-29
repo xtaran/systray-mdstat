@@ -6,7 +6,3 @@
 
 override_dh_auto_test:
 	xvfb-run dh_auto_test -D .build/debian-build
-
-# Not needed, c.f. https://tracker.debian.org/news/845042
-override_dh_strip_nondeterminism:
-	# no-op

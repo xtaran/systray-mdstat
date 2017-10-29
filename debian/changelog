@@ -4,9 +4,8 @@ systray-mdstat (1.1.1-1) UNRELEASED; urgency=medium
   * Bump debhelper compatibility to 10.
     + Update versioned debhelper build-dependency accordingly.
   * Set "Rules-Requires-Root: no".
-    + Skip dh_strip_nondeterminism. Currently doesn't work well with R³
-      and is not needed for this package anyways. Thanks to Niels Thykier
-      for pointing out the latter.
+    + Build-Conflict with dh-strip-nondeterminism < 0.040~ to ensure
+      proper "R³: no" support.
   * Declare compliance with Debian Policy 4.1.1.
     + Change priority from extra to optional. (Actually already a
       requirement of 4.1.0.)
