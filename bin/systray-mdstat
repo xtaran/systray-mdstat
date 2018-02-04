@@ -114,17 +114,48 @@ sub show_menu {
     # Only show menu if right button was clicked
     if (ref($event) and $event->button == 3) {
         my $right_click = Gtk3::Menu->new;
+
+        my $about_item = Gtk3::ImageMenuItem->new('About');
+        $about_item->set_image(
+            Gtk3::Image->new_from_icon_name('application-about', 'menu'));
+        $about_item->signal_connect('activate' => \&show_about_dialog);
+        $right_click->append($about_item);
+
         my $exit_item = Gtk3::ImageMenuItem->new('Quit');
         $exit_item->set_image(
             Gtk3::Image->new_from_icon_name('application-exit', 'menu'));
         $exit_item->signal_connect('activate' => sub { Gtk3->main_quit(); });
         $right_click->append($exit_item);
+
         $right_click->show_all;
         $right_click->popup(undef, undef, sub {
             Gtk3::StatusIcon::position_menu($right_click, 0, 0, $icon);
                             }, [1, 1], 0, 0);
     }
     return 1;
+}
+
+sub show_about_dialog {
+    # https://developer.gnome.org/gtk3/stable/GtkAboutDialog.html
+    my $aboutdialog = Gtk3::AboutDialog->new();
+
+    my @authors = ('Axel Beckert');
+    my @artists = ('Michael Cramer');
+
+    $aboutdialog->set_program_name('systray-mdstat');
+    $aboutdialog->set_copyright(
+        "Copyright \xa9 2017-2018 ".join(', ', @authors));
+    $aboutdialog->set_license_type('GTK_LICENSE_GPL_3_0');
+    # important: set_authors and set_documenters need an array ref!
+    # with a normal array it doesn't work!
+    $aboutdialog->set_authors(\@authors);
+    $aboutdialog->set_artists(\@artists);
+    $aboutdialog->set_website('https://github.com/xtaran/systray-mdstat');
+    $aboutdialog->set_website_label('systray-mdstat on GitHub');
+    # to close the aboutdialog when 'close' is clicked
+    $aboutdialog->signal_connect('response' => sub { shift->destroy(); } );
+
+    $aboutdialog->show();
 }
 
 
