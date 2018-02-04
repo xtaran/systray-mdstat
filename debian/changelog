@@ -1,6 +1,7 @@
-systray-mdstat (1.1.1-1) UNRELEASED; urgency=medium
+systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
 
-  * TODO: New minor upstream release with only documentation changes.
+  * New upstream release
+    + Adds right-click menu.
   * Bump debhelper compatibility to 10.
     + Update versioned debhelper build-dependency accordingly.
   * Set "Rules-Requires-Root: no".

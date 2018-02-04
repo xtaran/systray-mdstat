@@ -86,6 +86,7 @@ sub main {
 
     $icon = Gtk3::StatusIcon->new();
     $icon->set_visible(1);
+    $icon->signal_connect('button-release-event', \&show_menu);
 
     try {
         Glib::Object::Introspection->setup(
@@ -105,6 +106,27 @@ sub main {
     Glib::Timeout->add_seconds(3, \&check_mdstat);
     Gtk3->main();
 }
+
+
+sub show_menu {
+    my ($icon, $event) = @_;
+
+    # Only show menu if right button was clicked
+    if (ref($event) and $event->button == 3) {
+        my $right_click = Gtk3::Menu->new;
+        my $exit_item = Gtk3::ImageMenuItem->new('Quit');
+        $exit_item->set_image(
+            Gtk3::Image->new_from_icon_name('application-exit', 'menu'));
+        $exit_item->signal_connect('activate' => sub { Gtk3->main_quit(); });
+        $right_click->append($exit_item);
+        $right_click->show_all;
+        $right_click->popup(undef, undef, sub {
+            Gtk3::StatusIcon::position_menu($right_click, 0, 0, $icon);
+                            }, [1, 1], 0, 0);
+    }
+    return 1;
+}
+
 
 sub populate_icon_dirs {
     # Unfortunately File::ShareDir functions die instead of returning
