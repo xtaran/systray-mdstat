@@ -3,8 +3,6 @@ Section: utils
 Priority: optional
 Maintainer: Axel Beckert <abe@debian.org>
 Build-Depends: debhelper (>= 10),
-               libfile-sharedir-install-perl,
-               libfile-which-perl <!nocheck>,
                dh-dist-zilla,
                libdist-zilla-plugin-git-perl,
                libdist-zilla-plugin-githubmeta-perl,
@@ -13,7 +11,9 @@ Build-Depends: debhelper (>= 10),
                libdist-zilla-plugin-podweaver-perl,
                libdist-zilla-plugin-test-kwalitee-perl,
                libdist-zilla-plugin-test-perl-critic-perl,
+               libfile-sharedir-install-perl,
                libfile-sharedir-perl <!nocheck>,
+               libfile-which-perl <!nocheck>,
                libgtk3-perl <!nocheck>,
                libtry-tiny-perl <!nocheck>,
                xauth <!nocheck>,
@@ -28,11 +28,11 @@ Build-Conflicts: dh-strip-nondeterminism (<< 0.040~)
 
 Package: systray-mdstat
 Architecture: all
-Depends: ${misc:Depends},
-         ${perl:Depends},
-         libfile-sharedir-perl,
+Depends: libfile-sharedir-perl,
          libgtk3-perl,
-         libtry-tiny-perl
+         libtry-tiny-perl,
+         ${misc:Depends},
+         ${perl:Depends}
 Enhances: mdadm
 Suggests: perlpanel | stalonetray | trayer | cairo-dock-systray-plug-in | docker | libgtk2-traymanager-perl | taffybar | tint2 | wmsystemtray | fspanel | fbpanel | lxqt-panel | lxpanel | mate-panel | xfce4-panel | jwm | i3-wm | awesome | fvwm,
           smart-notifier
