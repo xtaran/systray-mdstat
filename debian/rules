@@ -5,4 +5,6 @@
 	dh $@ --with dist_zilla
 
 override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	xvfb-run dh_auto_test -D .build/debian-build
+endif
