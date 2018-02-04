@@ -2,6 +2,7 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
 
   * New upstream release
     + Adds right-click menu.
+    + Uses Desktop::Notify (libdesktop-notify-perl) for notifications.
   * Bump debhelper compatibility to 10.
     + Update versioned debhelper build-dependency accordingly.
   * Set "Rules-Requires-Root: no".

@@ -36,6 +36,7 @@ hence I'm not bound to the licenses they used for their code.)
 use List::Util qw(max);
 use File::ShareDir ':ALL';
 use Try::Tiny;
+use Desktop::Notify;
 
 my $proc_mdstat = '/proc/mdstat';
 my @icon_dirs = qw(
@@ -50,7 +51,9 @@ my @mdstat_checks = (
     [ qr/\[U*_U*\]/             => 3     => '<b>DEGRADED</b>' ],
     );
 
-our $use_notify = 1;
+my $notify = Desktop::Notify->new(
+    app_icon => find_icon_path('harddrivewarn'),
+);
 my $old_state = 0;
 my $icon;
 
@@ -60,7 +63,6 @@ sub main {
     use Getopt::Long qw( :config no_auto_abbrev );
     use Gtk3 -init;
     use Glib qw(TRUE FALSE);
-    use Glib::Object::Introspection;
     use Pod::Usage;
 
     my $help;
@@ -87,18 +89,6 @@ sub main {
     $icon = Gtk3::StatusIcon->new();
     $icon->set_visible(1);
     $icon->signal_connect('button-release-event', \&show_menu);
-
-    try {
-        Glib::Object::Introspection->setup(
-            basename => 'Notify',
-            version => '0.7',
-            package => "Systray::Mdstat::Notify",
-            );
-        Systray::Mdstat::Notify->init();
-    } catch {
-        say "no notify because setup failed: $@";
-        $use_notify = 0;
-    };
 
     populate_icon_dirs();
 
@@ -220,7 +210,7 @@ sub check_mdstat {
         $message = "$proc_mdstat state changed: ".$text;
     }
     if ($state != $old_state) {
-        &send_notification($icon, "Software RAID State", $message);
+        &send_notification($icon, "Software RAID State", $message, $state);
         $old_state = $state;
     }
 
@@ -242,27 +232,19 @@ sub update_icon {
 }
 
 sub send_notification {
-    my ($icon, $title, $text) = @_;
+    my ($icon, $title, $text, $state) = @_;
 
     # Check if we're running under a GUI by looking at $icon
     if ($icon) {
-        if ($use_notify) {
-            my $notif = Systray::Mdstat::Notify::Notification->new(
-                $title, $text);
-            try {
-                $notif->show;
-            } catch {
-                # Something went wrong trying to show a notification
-                # message. Fall back to using a dialog box instead.
-                $use_notify = 0;
-            };
-        }
-        if (!$use_notify) {
-            my $dialog = Gtk3::MessageDialog->new(
-                undef, 'destroy-with-parent', 'warning', 'ok', $text);
-            $dialog->run;
-            $dialog->destroy;
-        }
+        my $notif = $notify->create(
+            summary => $title,
+            body    => $text,
+            timeout => 0,
+            hints   => {
+                urgency => $state-1,
+            },
+        );
+        $notif->show;
     } else {
         return "NOTIFY: title=$title text=$text";
     }
