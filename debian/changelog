@@ -2,7 +2,7 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
 
   * New upstream release
     + Adds right-click menu.
-  * Bump debhelper compatibility to 10.
+  * Bump debhelper compatibility to 11.
     + Update versioned debhelper build-dependency accordingly.
   * Set "Rules-Requires-Root: no".
     + Build-Conflict with dh-strip-nondeterminism < 0.040~ to ensure
