@@ -12,6 +12,7 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
       requirement of 4.1.0.)
   * Apply "wrap-and-sort -a".
   * Check for DEB_BUILD_PROFILES in override_dh_auto_test.
+  * Add DEP12 debian/upstream/metadata file.
 
  -- Axel Beckert <abe@debian.org>  Fri, 27 Oct 2017 22:46:39 +0200
 
