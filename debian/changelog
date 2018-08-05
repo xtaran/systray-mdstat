@@ -7,7 +7,7 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
   * Set "Rules-Requires-Root: no".
     + Build-Conflict with dh-strip-nondeterminism < 0.040~ to ensure
       proper "R³: no" support.
-  * Declare compliance with Debian Policy 4.1.3.
+  * Declare compliance with Debian Policy 4.2.0.
     + Change priority from extra to optional. (Actually already a
       requirement of 4.1.0.)
   * Apply "wrap-and-sort -a".
