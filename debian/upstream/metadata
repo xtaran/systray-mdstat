@@ -1,0 +1,10 @@
+%YAML 1.1
+---
+# https://wiki.debian.org/UpstreamMetadata
+Bug-Database: https://github.com/xtaran/systray-mdstat/issues
+Changelog: https://github.com/xtaran/systray-mdstat/blob/master/debian/changelog
+Contact: Axel Beckert <abe@deuxchevaux.org>
+Name: systray-mdstat
+Homepage: https://github.com/xtaran/systray-mdstat#readme
+Repository: https://github.com/xtaran/systray-mdstat.git
+Repository-Browse: https://github.com/xtaran/systray-mdstat
