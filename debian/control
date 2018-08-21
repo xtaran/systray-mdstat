@@ -34,7 +34,7 @@ Depends: libfile-sharedir-perl,
          ${misc:Depends},
          ${perl:Depends}
 Enhances: mdadm
-Suggests: perlpanel | stalonetray | trayer | cairo-dock-systray-plug-in | docker | libgtk2-traymanager-perl | taffybar | tint2 | wmsystemtray | fspanel | fbpanel | lxqt-panel | lxpanel | mate-panel | xfce4-panel | jwm | i3-wm | awesome | fvwm,
+Suggests: perlpanel | stalonetray | trayer | cairo-dock-systray-plug-in | wmdocker | libgtk2-traymanager-perl | taffybar | tint2 | wmsystemtray | fspanel | fbpanel | lxqt-panel | lxpanel | mate-panel | xfce4-panel | jwm | i3-wm | awesome | fvwm,
           smart-notifier
 Description: Notifies about Linux Software RAID changes in system tray
  systray-mdstat is a system tray icon indicating the state of local
