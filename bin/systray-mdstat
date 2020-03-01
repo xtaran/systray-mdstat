@@ -52,9 +52,6 @@ my @mdstat_checks = (
     [ qr/\[U*_U*\]/             => 3     => '<b>DEGRADED</b>' ],
     );
 
-my $notify = Desktop::Notify->new(
-    app_icon => find_icon_path('harddrivewarn'),
-);
 my $old_state = 0;
 my $icon;
 
@@ -237,15 +234,16 @@ sub send_notification {
 
     # Check if we're running under a GUI by looking at $icon
     if ($icon) {
-        my $notif = $notify->create(
+        Desktop::Notify->new(
+            app_icon => abs_path(find_icon_path("harddrive".$states[$state])),
+        )->create(
             summary => $title,
             body    => $text,
             timeout => 0,
             hints   => {
                 urgency => $state-1,
             },
-        );
-        $notif->show;
+        )->show;
     } else {
         return "NOTIFY: title=$title text=$text";
     }
@@ -257,7 +255,7 @@ sub find_icon_path {
     my $fullpath;
     foreach my $path (@icon_dirs) {
         if (-r "$path/$filename") {
-            $fullpath = abs_path("$path/$filename");
+            $fullpath = "$path/$filename";
             last;
         }
     }
