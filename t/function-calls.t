@@ -27,19 +27,19 @@ foreach my $basename (qw(
 }
 
 my @ok = read_and_parse_mdstat('t/proc/mdstat.ok');
-is($ok[0], "md2: OK; md1: OK; md0: OK",
+is($ok[0], "md2: OK\nmd1: OK\nmd0: OK",
    "read_and_parse_mdstat return correct text for ok-ish mdstat");
 is($ok[1], 1,
    "read_and_parse_mdstat return correct state for ok-ish mdstat");
 
 my @warning = read_and_parse_mdstat('t/proc/mdstat.check');
-is($warning[0], "md2: OK; md1: OK (check); md0: OK",
+is($warning[0], "md2: OK\nmd1: OK (check)\nmd0: OK",
    "read_and_parse_mdstat return correct text for warning-ish mdstat");
 is($warning[1], 2,
    "read_and_parse_mdstat return correct state for warning-ish mdstat");
 
 my @degraded = read_and_parse_mdstat('t/proc/mdstat.degraded');
-is($degraded[0], "md2: <b>DEGRADED</b>; md1: OK; md0: OK",
+is($degraded[0], "md2: <b>DEGRADED</b>\nmd1: OK\nmd0: OK",
    "read_and_parse_mdstat return correct text for degraded-ish mdstat");
 is($degraded[1], 3,
    "read_and_parse_mdstat return correct state for degraded-ish mdstat");
