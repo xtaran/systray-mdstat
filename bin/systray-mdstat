@@ -37,6 +37,7 @@ use List::Util qw(max);
 use File::ShareDir ':ALL';
 use Try::Tiny;
 use Desktop::Notify;
+use Cwd 'abs_path';
 
 my $proc_mdstat = '/proc/mdstat';
 my @icon_dirs = qw(
@@ -256,7 +257,7 @@ sub find_icon_path {
     my $fullpath;
     foreach my $path (@icon_dirs) {
         if (-r "$path/$filename") {
-            $fullpath = "$path/$filename";
+            $fullpath = abs_path("$path/$filename");
             last;
         }
     }
