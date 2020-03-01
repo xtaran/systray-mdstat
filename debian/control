@@ -2,7 +2,7 @@ Source: systray-mdstat
 Section: utils
 Priority: optional
 Maintainer: Axel Beckert <abe@debian.org>
-Build-Depends: debhelper (>= 11),
+Build-Depends: debhelper-compat (= 12),
                dh-dist-zilla,
                libdesktop-notify-perl <!nocheck>,
                libdist-zilla-plugin-git-perl,
@@ -19,7 +19,7 @@ Build-Depends: debhelper (>= 11),
                libtry-tiny-perl <!nocheck>,
                xauth <!nocheck>,
                xvfb <!nocheck>
-Standards-Version: 4.2.0
+Standards-Version: 4.5.0
 Homepage: https://github.com/xtaran/systray-mdstat#readme
 Vcs-Git: https://github.com/xtaran/systray-mdstat.git
 Vcs-Browser: https://github.com/xtaran/systray-mdstat

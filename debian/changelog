@@ -3,12 +3,13 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
   * New upstream release
     + Adds right-click menu.
     + Uses Desktop::Notify (libdesktop-notify-perl) for notifications.
-  * Bump debhelper compatibility to 11.
-    + Update versioned debhelper build-dependency accordingly.
+    + Use line breaks instead of semicolons as delimiter for readablity.
+  * Bump debhelper compatibility to 12.
+    + Build-depend on "debhelper-compat (= 12)" to replace debian/compat.
   * Set "Rules-Requires-Root: no".
     + Build-Conflict with dh-strip-nondeterminism < 0.040~ to ensure
       proper "R³: no" support.
-  * Declare compliance with Debian Policy 4.2.0.
+  * Declare compliance with Debian Policy 4.5.0.
     + Change priority from extra to optional. (Actually already a
       requirement of 4.1.0.)
   * Apply "wrap-and-sort -a".
