@@ -42,7 +42,6 @@ before_install:
 install:
   - cpan-install --deps
   - cpan-install --coverage
-  - dzil authordeps --missing | cpanm --force
   - rm -vf t/author-critic.t
 
 script:
