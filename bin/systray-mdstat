@@ -217,7 +217,7 @@ sub check_mdstat {
     if ($old_state == 0 and $state != 0) {
         $message = "Current $proc_mdstat state:\n\n".$text;
     } else {
-        $message = "$proc_mdstat state changed: ".$text;
+        $message = "$proc_mdstat state changed:\n\n".$text;
     }
     if ($state != $old_state) {
         &send_notification($icon, "Software RAID State", $message);
