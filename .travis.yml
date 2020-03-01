@@ -23,8 +23,6 @@ matrix:
   allow_failures:
     - perl: blead
 
-sudo: false
-
 addons:
   apt:
     packages:
