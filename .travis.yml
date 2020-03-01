@@ -32,6 +32,7 @@ addons:
     - libgtk3-perl
     - xvfb
     - xauth
+    - dbus
 
 before_install:
   - eval $(curl https://travis-perl.github.io/init) --auto
