@@ -2,7 +2,7 @@ Source: systray-mdstat
 Section: utils
 Priority: optional
 Maintainer: Axel Beckert <abe@debian.org>
-Build-Depends: debhelper (>= 11),
+Build-Depends: debhelper-compat (= 12),
                dh-dist-zilla,
                libdist-zilla-plugin-git-perl,
                libdist-zilla-plugin-githubmeta-perl,
