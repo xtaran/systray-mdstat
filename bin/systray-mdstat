@@ -40,9 +40,7 @@ use Desktop::Notify;
 use Cwd 'abs_path';
 
 my $proc_mdstat = '/proc/mdstat';
-my @icon_dirs = qw(
-    share
-    );
+my @icon_dirs = qw( share );
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
     # regular expression  => state => string
