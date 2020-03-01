@@ -38,8 +38,78 @@ use File::ShareDir ':ALL';
 use Try::Tiny;
 use Desktop::Notify;
 use Cwd 'abs_path';
+use ConfigReader::Simple;
 
-my $proc_mdstat = '/proc/mdstat';
+###
+### Global defaults
+###
+
+my $default_config = <<'EOT';
+# Note: Due to a bug in ConfigReader::Simple
+# (https://github.com/briandfoy/configreader-simple/issues/2), there
+# are currently no true blank lines possible in this text.
+#
+# How often to poll in seconds
+poll-interval = 3
+#
+# Where to read the state from
+read-from = /proc/mdstat
+#
+# Show notifications (1 = Yes, 0 = No)
+notification = 1
+#
+# Show an icon in notifications (1 = Yes, 0 = No)
+notification-icon = 1
+#
+# Notification timeout in seconds, 0 = no timeout
+notification-timeout = 0
+#
+# Show an icon in the systray (1 = Yes, 0 = No)
+systray = 1
+#
+# Show notifications and  tool tip in one line  (1 = Yes, 0 = No)
+oneliner = 0
+
+EOT
+
+
+###
+### Finding configuration files and read them
+###
+
+# Unfortunately File::ShareDir functions die instead of returning
+# undef if they can't find an according directory.
+
+my $share_dir;
+try { $share_dir = dist_dir('systray-mdstat') };
+my @config_files = (
+    $share_dir ? "$share_dir/systray-mdstat.conf" : (),
+    '/usr/local/etc/systray-mdstat.conf',
+    '/etc/systray-mdstat.conf',
+    '~/.systray-mdstat.conf',
+    );
+
+if (exists($ENV{XDG_CONFIG_HOME}) and defined($ENV{XDG_CONFIG_HOME})) {
+    push(@config_files, "$ENV{XDG_CONFIG_HOME}/systray-mdstat.conf");
+} else {
+    push(@config_files, "~/.config/systray-mdstat.conf");
+}
+
+$ConfigReader::Simple::Die = 1;
+my $config = ConfigReader::Simple->new_string(
+    Strings => [ \$default_config ],
+    Keys  => [qw(
+              poll-interval
+              read-from
+              notification
+              notification-icon
+              notification-timeout
+              systray
+              oneliner
+              )],
+    );
+
+my $proc_mdstat = $config->get('read-from');
 my @icon_dirs = qw( share );
 my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
@@ -49,6 +119,9 @@ my @mdstat_checks = (
     [ qr/\(F\)/                 => 3     => '<b>FAILED</b>'   ],
     [ qr/\[U*_U*\]/             => 3     => '<b>DEGRADED</b>' ],
     );
+
+my $delim   = $config->get('oneliner') ? '; ' : "\n";
+my $h_delim = $config->get('oneliner') ? ' '  : "\n\n";
 
 my $old_state = 0;
 my $icon;
@@ -64,6 +137,7 @@ sub main {
     my $help;
     my $usage;
     GetOptions(
+        $config,
         'help|h'        => \$help,
         'usage'         => \$usage,
         'read-from=s'   => \$proc_mdstat,
@@ -82,14 +156,16 @@ sub main {
             );
     }
 
-    $icon = Gtk3::StatusIcon->new();
-    $icon->set_visible(1);
-    $icon->signal_connect('button-release-event', \&show_menu);
+    if ($config->get('systray')) {
+        $icon = Gtk3::StatusIcon->new();
+        $icon->set_visible(1);
+        $icon->signal_connect('button-release-event', \&show_menu);
+    }
 
     populate_icon_dirs();
 
     check_mdstat();
-    Glib::Timeout->add_seconds(3, \&check_mdstat);
+    Glib::Timeout->add_seconds($config->get('poll-interval'), \&check_mdstat);
     Gtk3->main();
 }
 
@@ -170,7 +246,7 @@ sub read_and_parse_mdstat {
         while (my $line = <$MDSTAT>) {
             if ($line =~ /^(md\d+) *: /) {
                 $last_md = $1;
-                $text .= "\n" unless $text eq '';
+                $text .= $delim unless $text eq '';
             } else {
                 foreach my $check (@mdstat_checks) {
                     my $use_format = $check->[2] =~ /\%/;
@@ -197,16 +273,18 @@ sub read_and_parse_mdstat {
 
 sub check_mdstat {
     my ($text, $state) = read_and_parse_mdstat($proc_mdstat);
-    &update_icon($icon, $text, $state);
+    &update_icon($icon, $text, $state)
+            if $config->get('systray');
 
     my $message;
     if ($old_state == 0 and $state != 0) {
-        $message = "Current $proc_mdstat state:\n\n".$text;
+        $message = "Current $proc_mdstat state:".$h_delim.$text;
     } else {
-        $message = "$proc_mdstat state changed:\n\n".$text;
+        $message = "$proc_mdstat state changed:".$h_delim.$text;
     }
     if ($state != $old_state) {
-        &send_notification($icon, "Software RAID State", $message, $state);
+        &send_notification($icon, "Software RAID State", $message, $state)
+            if $config->get('notification');
         $old_state = $state;
     }
 
@@ -230,14 +308,16 @@ sub update_icon {
 sub send_notification {
     my ($icon, $title, $text, $state) = @_;
 
-    # Check if we're running under a GUI by looking at $icon
-    if ($icon) {
+    # Check if we're running under a GUI
+    if ($config->get('notification')) {
         Desktop::Notify->new(
-            app_icon => abs_path(find_icon_path("harddrive".$states[$state])),
+            $config->get('notification-icon') ?
+            ( app_icon => abs_path(find_icon_path("harddrive".$states[$state]))) :
+            (),
         )->create(
             summary => $title,
             body    => $text,
-            timeout => 0,
+            timeout => $config->get('notification-timeout') * 1000, # wants ms
             hints   => {
                 urgency => $state-1,
             },

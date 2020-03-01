@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Axel Beckert <abe@debian.org>
 Build-Depends: debhelper-compat (= 12),
                dh-dist-zilla,
+               libconfigreader-simple-perl <!nocheck>,
                libdesktop-notify-perl <!nocheck>,
                libdist-zilla-plugin-git-perl,
                libdist-zilla-plugin-githubmeta-perl,
@@ -29,7 +30,8 @@ Build-Conflicts: dh-strip-nondeterminism (<< 0.040~)
 
 Package: systray-mdstat
 Architecture: all
-Depends: libdesktop-notify-perl,
+Depends: libconfigreader-simple-perl,
+         libdesktop-notify-perl,
          libfile-sharedir-perl,
          libgtk3-perl,
          libtry-tiny-perl,

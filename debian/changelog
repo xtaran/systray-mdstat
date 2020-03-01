@@ -4,6 +4,8 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
     + Adds right-click menu.
     + Uses Desktop::Notify (libdesktop-notify-perl) for notifications.
     + Use line breaks instead of semicolons as delimiter for readablity.
+    + Add support for config files and make more things configurable.
+    + From now on by default, notifications don't time out. (configurable)
   * Bump debhelper compatibility to 12.
     + Build-depend on "debhelper-compat (= 12)" to replace debian/compat.
   * Set "Rules-Requires-Root: no".
