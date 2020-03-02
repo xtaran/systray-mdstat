@@ -130,7 +130,7 @@ sub show_about_dialog {
 
     $aboutdialog->set_program_name('systray-mdstat');
     $aboutdialog->set_copyright(
-        "Copyright \xa9 2017-2018 ".join(', ', @authors));
+        "Copyright \xa9 2017-2020 ".join(', ', @authors));
     $aboutdialog->set_license_type('GTK_LICENSE_GPL_3_0');
     # important: set_authors and set_documenters need an array ref!
     # with a normal array it doesn't work!

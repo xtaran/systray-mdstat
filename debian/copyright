@@ -4,7 +4,7 @@ Upstream-Contact: Axel Beckert <abe@deuxchevaux.org>
 Source: https://github.com/xtaran/systray-mdstat
 
 Files: *
-Copyright: 2017 Axel Beckert <abe@deuxchevaux.org>
+Copyright: 2017-2020 Axel Beckert <abe@deuxchevaux.org>
 License: GPL-3+
 
 Files: share/*

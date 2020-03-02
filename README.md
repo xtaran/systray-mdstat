@@ -81,7 +81,7 @@ hence all version numbers have the scheme _Break.Feature.Bugfix_.
 Author, Copyright and License
 -----------------------------
 
-Copyright © 2017 by [Axel Beckert](https://axel.beckert.ch/)
+Copyright © 2017-2020 by [Axel Beckert](https://axel.beckert.ch/)
 <abe@deuxchevaux.org>
 
 This program is free software; you can redistribute it and/or modify
