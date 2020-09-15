@@ -47,7 +47,7 @@ my @mdstat_checks = (
     [ qr/\[U+\]/                => 1     => 'OK'       ],
     [ qr/(resync|verify|check)/ => 2     => ' (%s)'    ],
     [ qr/\(F\)/                 => 3     => '<b>FAILED</b>'   ],
-    [ qr/\[U*_U*\]/             => 3     => '<b>DEGRADED</b>' ],
+    [ qr/\[[U_]*_+[U_]*\]/      => 3     => '<b>DEGRADED</b>' ],
     );
 
 my $old_state = 0;

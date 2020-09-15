@@ -50,4 +50,10 @@ is($nonexistent[0], "No t/proc/mdstat.nonexistent found",
 is($nonexistent[1], 0,
    "read_and_parse_mdstat return correct state for nonexistent mdstat");
 
+my @degraded4d = read_and_parse_mdstat('t/proc/mdstat.raid1-4disks');
+is($degraded4d[0], "md0: <b>DEGRADED</b>",
+   "read_and_parse_mdstat return correct text for degraded-ish mdstat");
+is($degraded4d[1], 3,
+   "read_and_parse_mdstat return correct state for degraded-ish mdstat");
+
 done_testing();

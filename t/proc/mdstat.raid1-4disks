@@ -1,0 +1,5 @@
+Personalities : [raid1] [linear] [multipath] [raid0] [raid6] [raid5] [raid4] [raid10] 
+md0 : active raid1 sdk1[3] sdj1[2] sda1[0] sdb1[1]
+      2930134464 blocks super 1.2 [4/2] [UU__]
+      [>....................]  recovery =  1.3% (38752192/2930134464) finish=343.3min speed=140339K/sec
+      bitmap: 0/22 pages [0KB], 65536KB chunk
