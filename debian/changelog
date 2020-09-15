@@ -5,7 +5,7 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
     + Uses Desktop::Notify (libdesktop-notify-perl) for notifications.
     + Use line breaks instead of semicolons as delimiter for readablity.
     + Fixes false negative issue when multiple disks failed in a RAID.
-  * Bump debhelper compatibility to 12.
+  * Bump debhelper compatibility to 13.
     + Build-depend on "debhelper-compat (= 13)" to replace debian/compat.
   * Set "Rules-Requires-Root: no".
     + Build-Conflict with dh-strip-nondeterminism < 0.040~ to ensure
