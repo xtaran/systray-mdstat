@@ -219,6 +219,9 @@ sub update_icon {
     my ($icon, $text, $state) = @_;
     my $path = find_icon_path("harddrive".$states[$state]);
 
+    # Strip out HTML tags for tool tips
+    $text =~ s/<[^>]*?>//gs;
+
     if ($icon) {
         $icon->set_tooltip_text($text);
         $icon->set_from_file($path);
