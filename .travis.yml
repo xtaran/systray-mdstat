@@ -26,7 +26,7 @@ matrix:
 
 dist: focal
 # Implies "virt: lxd"
-arch: s390x
+arch: ppc64le
 
 addons:
   apt:
