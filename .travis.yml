@@ -40,7 +40,7 @@ addons:
     - cpanminus
 
 before_install:
-  - travis_wait eval $(curl https://travis-perl.github.io/init) --auto
+  - env TRAVIS_PERL_DEBUG=yes eval $(curl https://travis-perl.github.io/init) --auto
   - ln -vs bin lib
 
 install:
