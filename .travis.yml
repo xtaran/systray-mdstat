@@ -26,7 +26,7 @@ matrix:
 
 dist: focal
 # Implies "virt: lxd"
-arch: arm64
+arch: s390x
 
 addons:
   apt:
@@ -40,7 +40,7 @@ addons:
     - cpanminus
 
 before_install:
-  - env TRAVIS_PERL_DEBUG=yes eval $(curl https://travis-perl.github.io/init) --auto
+  - eval $(curl https://travis-perl.github.io/init) --auto
   - ln -vs bin lib
 
 install:
