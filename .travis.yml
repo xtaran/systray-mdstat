@@ -24,6 +24,10 @@ matrix:
   allow_failures:
     - perl: blead
 
+dist: focal
+# Implies "virt: lxd"
+arch: arm64
+
 addons:
   apt:
     packages:
