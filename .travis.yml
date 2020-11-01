@@ -37,9 +37,10 @@ addons:
     - xauth
     - libdbus-1-dev
     - dunst
+    - cpanminus
 
 before_install:
-  - eval $(curl https://travis-perl.github.io/init) --auto
+  - travis_wait eval $(curl https://travis-perl.github.io/init) --auto
   - ln -vs bin lib
 
 install:
