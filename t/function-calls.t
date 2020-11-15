@@ -32,10 +32,16 @@ is($ok[0], "md2: OK\nmd1: OK\nmd0: OK",
 is($ok[1], 1,
    "read_and_parse_mdstat return correct state for ok-ish mdstat");
 
-my @warning = read_and_parse_mdstat('t/proc/mdstat.check');
-is($warning[0], "md2: OK\nmd1: OK (check)\nmd0: OK",
+my @okcheck = read_and_parse_mdstat('t/proc/mdstat.check');
+is($okcheck[0], "md2: OK\nmd1: OK (check)\nmd0: OK",
+   "read_and_parse_mdstat return correct text for ok-ish mdstat");
+is($okcheck[1], 1,
+   "read_and_parse_mdstat return correct state for ok-ish mdstat");
+
+my @resync = read_and_parse_mdstat('t/proc/mdstat.resync');
+is($resync[0], "md2: OK\nmd1: OK (resync)\nmd0: OK",
    "read_and_parse_mdstat return correct text for warning-ish mdstat");
-is($warning[1], 2,
+is($resync[1], 2,
    "read_and_parse_mdstat return correct state for warning-ish mdstat");
 
 my @degraded = read_and_parse_mdstat('t/proc/mdstat.degraded');
