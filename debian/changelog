@@ -19,6 +19,7 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
   * Add DEP12 debian/upstream/metadata file.
   * Follow package renaming and suggest wmdocker instead of docker.
   * Update copyright years in debian/copyright.
+  * Enable autopkgtests by creating a minimal debian/tests/control file.
 
  -- Axel Beckert <abe@debian.org>  Fri, 27 Oct 2017 22:46:39 +0200
 
