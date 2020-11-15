@@ -3,7 +3,6 @@ systray-mdstat
 
 [![Travis CI Build Status](https://api.travis-ci.org/xtaran/systray-mdstat.svg)](https://travis-ci.org/xtaran/systray-mdstat)
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/systray-mdstat.svg)](https://repology.org/metapackage/systray-mdstat)
 ![Screenshot of systray-mdstat notifications](notifications.png)
 
 `systray-mdstat` is a system tray icon indicating the state of local
@@ -43,12 +42,60 @@ Requirements
     [File::ShareDir::Install](https://metacpan.org/pod/File::ShareDir::Install)
     to build and install.
 
+
+Installation
+------------
+
+### From a Distribution Package
+
+systray-mdstat is available in most Debian-based distribution releases since
+about mid-2017:
+
+* [Debian 10 Buster and later](https://packages.debian.org/systray-mdstat)
+* Devuan 3.0 Beowulf and later
+* Raspbian 10 Buster and later
+* Trisquel 9.0 LTS Etiona and later
+* [Ubuntu 18.04 LTS Bionic and later](https://packages.ubuntu.com/systray-mdstat)
+
+Of course it's also available in rolling release distributions based
+on Debian Testing or Unstable:
+
+* Kali Linux
+* ParrotOS
+* PureOS
+
+It's also available in these non-Debian based distributions:
+
+* [Arch User Repository (AUR)](https://aur.archlinux.org/packages/systray-mdstat/)
+
+For a complete and more current list of versions see the [nice
+overview at
+Repology](https://repology.org/project/systray-mdstat/versions):
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/systray-mdstat.svg)](https://repology.org/metapackage/systray-mdstat)
+
+
+### Building from a Release Tar Ball
+
+Works like most Perl modules or perl-based applications:
+
+```
+$ tar xzf systray-mdstat systray-mdstat-<version>.tar.gz
+$ cd systray-mdstat-<version>
+$ perl Makefile.PL
+$ make
+$ make test
+$ make install
+```
+
 ### Building from a Git Checkout
 
 * Requires [Dist::Zilla](http://dzil.org/). Once Dist::Zilla is
   installed, running `dzil authordeps` will list the additionally
   needed Dist::Zilla plugins. After installing them, use `dzil build`
   to get a tar ball usable with any CPAN-compatible toolset.
+
+  Afterwards continue as above.
 
 * Building the Debian package from Git source requires the above plus
   [dh-dist-zilla](https://github.com/elmar/dh-dist-zilla) (which is
