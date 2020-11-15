@@ -24,6 +24,9 @@ project adheres to
 
 * Use line breaks instead of semicolons as delimiter for readablity.
 * Notifications don't vanish by itself anymore.
+* Don't consider "check" and "verify" to be of "warning"
+  state. They're a worth a notification, but not a "warning" level
+  notification.
 
 ### Bug Fixes
 

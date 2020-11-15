@@ -46,7 +46,8 @@ my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
     # regular expression  => state => string
     [ qr/\[U+\]/                => 1     => 'OK'       ],
-    [ qr/(resync(?:=\S+)?|verify|check)/ => 2     => ' (%s)'    ],
+    [ qr/(verify|check)/        => 1     => ' (%s)'    ],
+    [ qr/(resync(?:=\S+)?)/     => 2     => ' (%s)'    ],
     [ qr/\(F\)/                 => 3     => '<b>FAILED</b>'   ],
     [ qr/\[[U_]*_+[U_]*\]/      => 3     => '<b>DEGRADED</b>' ],
     );
