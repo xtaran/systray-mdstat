@@ -38,6 +38,7 @@ use File::ShareDir ':ALL';
 use Try::Tiny;
 use Desktop::Notify;
 use Cwd 'abs_path';
+use POSIX 'strftime';
 
 my $proc_mdstat = '/proc/mdstat';
 my @icon_dirs = qw( share );
@@ -198,17 +199,22 @@ sub read_and_parse_mdstat {
 
 sub check_mdstat {
     my ($text, $state) = read_and_parse_mdstat($proc_mdstat);
+    my $timestamp = strftime('%c', localtime);
     &update_icon($icon, $text, $state);
 
-    my $message;
+    my $message; # Preamble + time stamp + actual content ($text)
     if ($old_state == 0 and $state != 0) {
         $message = <<"EOM";
+$timestamp
+
 Current $proc_mdstat state:
 
 $text
 EOM
     } else {
         $message = <<"EOM";
+$timestamp
+
 $proc_mdstat state changed:
 
 $text
