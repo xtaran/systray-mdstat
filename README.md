@@ -1,8 +1,10 @@
 systray-mdstat
 ==============
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/systray-mdstat.svg)](https://repology.org/metapackage/systray-mdstat)
 [![Travis CI Build Status](https://api.travis-ci.org/xtaran/systray-mdstat.svg)](https://travis-ci.org/xtaran/systray-mdstat)
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/systray-mdstat.svg)](https://repology.org/metapackage/systray-mdstat)
+![Screenshot of systray-mdstat notifications](notifications.png)
 
 `systray-mdstat` is a system tray icon indicating the state of local
 [Linux Software (MD) RAID](https://raid.wiki.kernel.org/) by checking
