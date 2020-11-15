@@ -7,6 +7,10 @@ use 5.010;
 use File::Which;
 use Test::More;
 
+# Needed to avoid warning "Too late to run INIT block at
+# /usr/lib/…/perl5/…/Glib/Object/Introspection.pm" on STDERR.
+use Glib::Object::Introspection;
+
 my $script = './bin/systray-mdstat';
 if (exists($ENV{ADTTMP}) or
     exists($ENV{AUTOPKGTEST_TMP})) {
