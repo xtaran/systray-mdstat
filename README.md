@@ -3,11 +3,11 @@ systray-mdstat
 
 [![Travis CI Build Status](https://api.travis-ci.org/xtaran/systray-mdstat.svg)](https://travis-ci.org/xtaran/systray-mdstat)
 
-![Screenshot of systray-mdstat notifications](notifications.png)
-
 `systray-mdstat` is a system tray icon indicating the state of local
 [Linux Software (MD) RAID](https://raid.wiki.kernel.org/) by checking
-`/proc/mdstat` periodically.
+`/proc/mdstat` periodically:
+
+![Screenshot of systray-mdstat notifications](notifications.png)
 
 It works at least on Linux and should work with any
 [freedesktop.org-compliant status area (aka system tray)](https://specifications.freedesktop.org/systemtray-spec/latest/).
