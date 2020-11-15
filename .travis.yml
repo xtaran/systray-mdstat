@@ -27,12 +27,12 @@ matrix:
 addons:
   apt:
     packages:
-    - libgirepository1.0-dev
-    - libgtk3-perl
-    - xvfb
-    - xauth
-    - libdbus-1-dev
-    - dunst
+      - libgirepository1.0-dev
+      - libgtk3-perl
+      - xvfb
+      - xauth
+      - libdbus-1-dev
+      - dunst
 
 before_install:
   - eval $(curl https://travis-perl.github.io/init) --auto
