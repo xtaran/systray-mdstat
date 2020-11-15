@@ -45,12 +45,13 @@ my @states = qw( spare ok warn fail );
 my @mdstat_checks = (
     # regular expression  => state => string
     [ qr/\[U+\]/                => 1     => 'OK'       ],
-    [ qr/(resync|verify|check)/ => 2     => ' (%s)'    ],
+    [ qr/(resync(?:=\S+)?|verify|check)/ => 2     => ' (%s)'    ],
     [ qr/\(F\)/                 => 3     => '<b>FAILED</b>'   ],
     [ qr/\[[U_]*_+[U_]*\]/      => 3     => '<b>DEGRADED</b>' ],
     );
 
 my $old_state = 0;
+my $old_text = '';
 my $icon;
 
 main() unless caller(0);
@@ -201,13 +202,22 @@ sub check_mdstat {
 
     my $message;
     if ($old_state == 0 and $state != 0) {
-        $message = "Current $proc_mdstat state:\n\n".$text;
+        $message = <<"EOM";
+Current $proc_mdstat state:
+
+$text
+EOM
     } else {
-        $message = "$proc_mdstat state changed:\n\n".$text;
+        $message = <<"EOM";
+$proc_mdstat state changed:
+
+$text
+EOM
     }
-    if ($state != $old_state) {
+    if ($state != $old_state or $text ne $old_text) {
         &send_notification($icon, "Software RAID State", $message, $state);
         $old_state = $state;
+        $old_text = $text;
     }
 
     # Return explicitly true so that Gtk3 continues to run this

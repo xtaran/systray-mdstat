@@ -7,5 +7,3 @@ systray-mdstat TODO
 * Maybe show time stamps in notifications.
 * Maybe show recovery/check progress in notification. (Can
   notifications be updated?)
-* New notification when actual state of any RAID changes, not just the
-  overall state.
