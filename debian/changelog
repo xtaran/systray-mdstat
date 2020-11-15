@@ -20,8 +20,8 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
   * Follow package renaming and suggest wmdocker instead of docker.
   * Update copyright years in debian/copyright.
   * Enable autopkgtests by creating a minimal debian/tests/control file.
-  * Add build-dependency on libdist-zilla-plugins-cjm-perl for updated
-    release process in dist.ini.
+  * Add build-dependencies on libdist-zilla-plugin-run-perl and
+    libdist-zilla-plugins-cjm-perl for updated dzil release process.
 
  -- Axel Beckert <abe@debian.org>  Fri, 27 Oct 2017 22:46:39 +0200
 
