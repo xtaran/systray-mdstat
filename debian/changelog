@@ -1,4 +1,4 @@
-systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
+systray-mdstat (1.2.0-1) unstable; urgency=medium
 
   * New upstream bugfix and feature release
     + Uses Desktop::Notify (libdesktop-notify-perl) for notifications.
@@ -23,7 +23,7 @@ systray-mdstat (1.2.0-1) UNRELEASED; urgency=medium
   * Add build-dependencies on libdist-zilla-plugin-run-perl and
     libdist-zilla-plugins-cjm-perl for updated dzil release process.
 
- -- Axel Beckert <abe@debian.org>  Fri, 27 Oct 2017 22:46:39 +0200
+ -- Axel Beckert <abe@debian.org>  Mon, 16 Nov 2020 03:15:43 +0100
 
 systray-mdstat (1.1.0-1) unstable; urgency=medium
 
