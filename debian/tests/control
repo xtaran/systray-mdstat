@@ -1,2 +1,0 @@
-Test-Command: xvfb-run env NO_AT_BRIDGE=1 prove -v t
-Depends: @, @builddeps@
