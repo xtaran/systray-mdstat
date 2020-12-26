@@ -12,4 +12,6 @@ started daemons upon user login or add an according line to your
 
   /usr/lib/notification-daemon/notification-daemon &
 
- -- Axel Beckert <abe@debian.org>, Sat, 26 Dec 2020 08:04:16 +0100
+See https://bugs.debian.org/974949 for a more in-depth discussion.
+
+ -- Axel Beckert <abe@debian.org>, Sat, 26 Dec 2020 08:07:05 +0100
