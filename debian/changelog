@@ -1,4 +1,4 @@
-systray-mdstat (1.2.0-2) UNRELEASED; urgency=medium
+systray-mdstat (1.2.0-2) unstable; urgency=medium
 
   * Remove redundant debian/tests/control again. We were already and still
     are using "Testsuite: autopkgtest-pkg-perl". Duh.
@@ -8,7 +8,7 @@ systray-mdstat (1.2.0-2) UNRELEASED; urgency=medium
       implementations start up automatically upon user login.
     + Closes: #974949
 
- -- Axel Beckert <abe@debian.org>  Mon, 16 Nov 2020 19:14:44 +0100
+ -- Axel Beckert <abe@debian.org>  Sat, 26 Dec 2020 08:08:20 +0100
 
 systray-mdstat (1.2.0-1) unstable; urgency=medium
 
