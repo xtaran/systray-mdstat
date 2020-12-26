@@ -35,6 +35,7 @@ Depends: libdesktop-notify-perl,
          libfile-sharedir-perl,
          libgtk3-perl,
          libtry-tiny-perl,
+         notification-daemon,
          ${misc:Depends},
          ${perl:Depends}
 Enhances: mdadm

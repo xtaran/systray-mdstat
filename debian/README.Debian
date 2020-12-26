@@ -1,0 +1,15 @@
+If you get the error message
+
+  org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+
+on starting up systray-mdstat, your window manager, desktop
+environment. .xsession or .xinitrc doesn't seem to start up the
+installed notification-daemon.
+
+You then might need to add it manually to the list of automatically
+started daemons upon user login or add an according line to your
+.xsession or .xinitrc like e.g. this one:
+
+  /usr/lib/notification-daemon/notification-daemon &
+
+ -- Axel Beckert <abe@debian.org>, Sat, 26 Dec 2020 08:04:16 +0100
