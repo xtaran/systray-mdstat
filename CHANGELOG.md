@@ -10,6 +10,15 @@ project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+[1.2.1] - UNRELEASED
+--------------------
+
+### Other Changes
+
+* Update Travis CI config wrt. to available Perl releases to test
+  against.
+
+
 [1.2.0] - 2020-11-16
 --------------------
 
@@ -82,6 +91,7 @@ project adheres to
 * Initial release.
 
 
+[Unreleased]: https://github.com/xtaran/systray-mdstat/compare/1.2.0...master
 [1.2.0]: https://github.com/xtaran/systray-mdstat/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/xtaran/systray-mdstat/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/xtaran/systray-mdstat/compare/1.0.0...1.0.1
