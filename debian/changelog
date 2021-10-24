@@ -1,3 +1,9 @@
+systray-mdstat (1.2.0-3) UNRELEASED; urgency=medium
+
+  * Declare compliance with Debian Policy 4.6.0. (No changes needed.)
+
+ -- Axel Beckert <abe@debian.org>  Sun, 24 Oct 2021 07:05:12 +0200
+
 systray-mdstat (1.2.0-2) unstable; urgency=medium
 
   * Remove redundant debian/tests/control again. We were already and still

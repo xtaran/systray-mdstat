@@ -21,7 +21,7 @@ Build-Depends: debhelper-compat (= 13),
                libtry-tiny-perl <!nocheck>,
                xauth <!nocheck>,
                xvfb <!nocheck>
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://github.com/xtaran/systray-mdstat#readme
 Vcs-Git: https://github.com/xtaran/systray-mdstat.git
 Vcs-Browser: https://github.com/xtaran/systray-mdstat
